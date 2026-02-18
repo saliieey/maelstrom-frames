@@ -149,7 +149,7 @@ export default function PortfolioGrid() {
         </div>
 
         {/* Featured Items - Large - Perfect Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12 px-4 sm:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 px-4 sm:px-0">
           {featuredItems.map((item, index) => (
             <Link
               key={item.id}
@@ -195,7 +195,7 @@ export default function PortfolioGrid() {
         </div>
 
         {/* Regular Grid - Perfect 3 Column Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 px-4 sm:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 px-4 sm:px-0 mt-6 md:mt-12">
           {regularItems.map((item, index) => (
             <Link
               key={item.id}
