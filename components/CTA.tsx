@@ -17,14 +17,14 @@ export default function CTA() {
     const ctx = gsap.context(() => {
       if (contentRef.current) {
         gsap.from(contentRef.current.children, {
-          y: 80,
+          y: 50,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.2,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.08,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 90%',
             toggleActions: 'play none none none',
           },
         })

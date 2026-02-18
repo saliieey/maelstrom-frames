@@ -19,22 +19,22 @@ export default function Portfolio() {
     const ctx = gsap.context(() => {
       if (heroRef.current) {
         gsap.from(heroRef.current.children, {
-          y: 60,
+          y: 40,
           opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          stagger: 0.2,
+          duration: 0.7,
+          ease: 'power2.out',
+          stagger: 0.1,
         })
       }
 
       if (gridRef.current) {
         gsap.from(gridRef.current.children, {
-          y: 100,
+          y: 60,
           opacity: 0,
-          scale: 0.95,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.1,
+          scale: 0.98,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.05,
           scrollTrigger: {
             trigger: gridRef.current,
             start: 'top 85%',

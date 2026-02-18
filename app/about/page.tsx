@@ -16,42 +16,42 @@ export default function About() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero animation
+      // Hero animation - faster and smoother
       if (heroRef.current) {
         gsap.from(heroRef.current.children, {
-          y: 60,
+          y: 40,
           opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          stagger: 0.2,
+          duration: 0.7,
+          ease: 'power2.out',
+          stagger: 0.1,
         })
       }
 
-      // Story section animations
+      // Story section animations - optimized
       if (storyRef.current) {
         gsap.from(storyRef.current.children, {
-          y: 80,
+          y: 50,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.15,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.08,
           scrollTrigger: {
             trigger: storyRef.current,
-            start: 'top 80%',
+            start: 'top 90%',
             toggleActions: 'play none none none',
           },
         })
       }
 
-      // Values section animations
+      // Values section animations - optimized
       if (valuesRef.current) {
         gsap.from(valuesRef.current.children, {
-          y: 60,
+          y: 50,
           opacity: 0,
-          scale: 0.95,
-          duration: 0.8,
-          ease: 'power3.out',
-          stagger: 0.1,
+          scale: 0.98,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.06,
           scrollTrigger: {
             trigger: valuesRef.current,
             start: 'top 85%',

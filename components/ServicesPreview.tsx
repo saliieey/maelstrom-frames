@@ -42,34 +42,34 @@ export default function ServicesPreview() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Section title animation
+      // Section title animation - faster and smoother
       gsap.from('.services-title', {
-        y: 80,
+        y: 50,
         opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out',
+        duration: 0.7,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 90%',
           toggleActions: 'play none none none',
         },
       })
 
-      // Stagger animation for cards
+      // Stagger animation for cards - optimized for speed
       cardsRef.current.forEach((card, index) => {
         if (card) {
           gsap.from(card, {
-            y: 100,
+            y: 60,
             opacity: 0,
-            scale: 0.95,
-            duration: 1,
-            ease: 'power3.out',
+            scale: 0.98,
+            duration: 0.6,
+            ease: 'power2.out',
             scrollTrigger: {
-              trigger: card,
+              trigger: sectionRef.current,
               start: 'top 85%',
               toggleActions: 'play none none none',
             },
-            delay: index * 0.15,
+            delay: index * 0.06,
           })
         }
       })

@@ -14,21 +14,21 @@ export default function StatsSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate stats on scroll
+      // Animate stats on scroll - faster and smoother
       statsRef.current.forEach((stat, index) => {
         if (stat) {
           gsap.from(stat, {
-            y: 60,
+            y: 40,
             opacity: 0,
-            scale: 0.9,
-            duration: 1,
-            ease: 'power3.out',
+            scale: 0.95,
+            duration: 0.6,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: 'top 85%',
+              start: 'top 90%',
               toggleActions: 'play none none none',
             },
-            delay: index * 0.1,
+            delay: index * 0.05,
           })
         }
       })

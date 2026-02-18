@@ -19,24 +19,24 @@ export default function Events() {
     const ctx = gsap.context(() => {
       if (heroRef.current) {
         gsap.from(heroRef.current.children, {
-          y: 60,
+          y: 40,
           opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          stagger: 0.2,
+          duration: 0.7,
+          ease: 'power2.out',
+          stagger: 0.1,
         })
       }
 
       if (introRef.current) {
         gsap.from(introRef.current.children, {
-          y: 80,
+          y: 50,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.15,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.08,
           scrollTrigger: {
             trigger: introRef.current,
-            start: 'top 80%',
+            start: 'top 90%',
             toggleActions: 'play none none none',
           },
         })
@@ -44,12 +44,12 @@ export default function Events() {
 
       if (gridRef.current) {
         gsap.from(gridRef.current.children, {
-          y: 100,
+          y: 60,
           opacity: 0,
-          scale: 0.95,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.1,
+          scale: 0.98,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.05,
           scrollTrigger: {
             trigger: gridRef.current,
             start: 'top 85%',

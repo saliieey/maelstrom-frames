@@ -18,24 +18,24 @@ export default function Services() {
     const ctx = gsap.context(() => {
       if (heroRef.current) {
         gsap.from(heroRef.current.children, {
-          y: 60,
+          y: 40,
           opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          stagger: 0.2,
+          duration: 0.7,
+          ease: 'power2.out',
+          stagger: 0.1,
         })
       }
 
       if (servicesRef.current) {
         gsap.from(servicesRef.current.children, {
-          y: 80,
+          y: 60,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.15,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.08,
           scrollTrigger: {
             trigger: servicesRef.current,
-            start: 'top 80%',
+            start: 'top 85%',
             toggleActions: 'play none none none',
           },
         })
