@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { gsap } from 'gsap'
@@ -9,6 +9,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const menuItemsRef = useRef<(HTMLLIElement | null)[]>([])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,41 @@ export default function Navigation() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  // Animate menu items when menu opens
+  useEffect(() => {
+    if (isOpen) {
+      const items = menuItemsRef.current.filter(Boolean)
+      if (items.length > 0) {
+        gsap.fromTo(
+          items,
+          {
+            opacity: 0,
+            x: -30,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+            ease: 'power3.out',
+            stagger: 0.06,
+          }
+        )
+      }
+    }
+  }, [isOpen])
 
   // Mobile menu animation removed - using CSS transitions instead
 
@@ -170,6 +206,8 @@ export default function Navigation() {
                   : 'text-white hover:bg-white/10'
               }`}
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
+              aria-haspopup="true"
             >
               <div className="absolute inset-0 flex flex-col justify-center space-y-1.5">
                 <span
@@ -199,62 +237,146 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Menu - Premium Full Screen */}
+      {/* Mobile Menu - Premium Professional Design */}
       <div
-        className={`mobile-menu fixed top-0 left-0 w-full h-screen bg-white z-[110] lg:hidden transition-transform duration-500 ease-in-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed inset-0 z-[110] lg:hidden ${
+          isOpen ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
+        aria-hidden={!isOpen}
       >
-          <div className="flex flex-col h-full">
-            {/* Mobile Header - Clean and Professional */}
-            <div className="flex items-center justify-end p-6 border-b border-gray-100">
+        {/* Professional Backdrop with Blur */}
+        <div 
+          className={`absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-500 ease-out ${
+            isOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          onClick={() => setIsOpen(false)}
+        />
+
+        {/* Premium Sliding Panel */}
+        <div
+          className={`absolute left-0 top-0 h-full w-[85%] max-w-[360px] bg-white shadow-2xl transition-transform duration-500 ease-out ${
+            isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+        >
+          {/* Professional Header Section */}
+          <div className="relative border-b border-gray-100 bg-gradient-to-br from-white to-gray-50/50">
+            <div className="flex items-center justify-between px-6 py-5">
+              <div className="flex flex-col space-y-1">
+                <span className="text-lg font-serif font-bold tracking-tight text-gray-900">
+                  Maelstrom Frames
+                </span>
+                <span className="text-[11px] font-medium uppercase tracking-wider text-gray-500">
+                  Photography &amp; Videography
+                </span>
+              </div>
               <button
                 onClick={(e) => {
                   e.preventDefault()
                   e.stopPropagation()
                   setIsOpen(false)
                 }}
-                className="p-2.5 text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-300 hover:scale-110"
+                className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-warm-500 focus:ring-offset-2"
                 aria-label="Close menu"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
+          </div>
 
-            {/* Mobile Navigation Links */}
-            <div className="flex-1 flex flex-col justify-center items-center space-y-8 px-8">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    setIsOpen(false)
-                  }}
-                  className={`text-3xl md:text-4xl font-light transition-colors duration-300 ${
-                    pathname === link.href
-                      ? 'text-warm-600'
-                      : 'text-gray-700 hover:text-warm-600'
-                  }`}
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                  }}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href="/contact"
-                onClick={(e) => {
-                  setIsOpen(false)
-                }}
-                className="mt-8 px-10 py-4 bg-warm-600 text-white font-semibold rounded-full text-lg hover:bg-warm-700 transition-all"
+          {/* Navigation Section */}
+          <nav className="flex-1 overflow-y-auto px-5 py-6">
+            <div className="mb-6">
+              <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-400">
+                Navigation
+              </span>
+            </div>
+            
+            <ul className="space-y-2">
+              {navLinks.map((link, index) => {
+                const isActive = pathname === link.href
+                return (
+                  <li 
+                    key={link.href}
+                    ref={(el) => {
+                      menuItemsRef.current[index] = el
+                    }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`
+                        group relative flex items-center justify-between rounded-xl px-4 py-3.5
+                        text-[15px] font-semibold leading-tight
+                        transition-all duration-300 ease-out
+                        ${isActive
+                          ? 'bg-gradient-to-r from-warm-50 to-warm-100/50 text-warm-700 shadow-sm'
+                          : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100'
+                        }
+                      `}
+                    >
+                      <span className="relative z-10 flex items-center gap-3">
+                        <span className="text-base">{link.label}</span>
+                      </span>
+                      
+                      {isActive ? (
+                        <div className="flex items-center gap-2">
+                          <div className="h-1.5 w-1.5 rounded-full bg-warm-600 shadow-sm" />
+                          <svg className="h-4 w-4 text-warm-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      ) : (
+                        <svg className="h-4 w-4 text-gray-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      )}
+                      
+                      {/* Active indicator line */}
+                      {isActive && (
+                        <div className="absolute left-0 top-0 bottom-0 w-1 rounded-r-full bg-gradient-to-b from-warm-500 to-warm-600" />
+                      )}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+
+          {/* Professional CTA Section */}
+          <div className="border-t border-gray-100 bg-gray-50/50 px-5 py-6">
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-warm-600 via-warm-600 to-warm-700 px-6 py-4 text-center text-sm font-bold text-white shadow-lg shadow-warm-600/40 transition-all duration-300 hover:shadow-xl hover:shadow-warm-600/50 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span className="relative z-10">Get a Quote</span>
+              <svg className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+              
+              {/* Shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+            </Link>
+            
+            {/* Contact Info */}
+            <div className="mt-4 space-y-2 text-center">
+              <a 
+                href="tel:+1234567890" 
+                className="block text-xs font-medium text-gray-600 hover:text-warm-600 transition-colors"
               >
-                Get Quote
-              </Link>
+                +1 (234) 567-890
+              </a>
+              <a 
+                href="mailto:info@maelstromframes.com" 
+                className="block text-xs text-gray-500 hover:text-warm-600 transition-colors"
+              >
+                info@maelstromframes.com
+              </a>
             </div>
           </div>
+        </div>
       </div>
     </>
   )
