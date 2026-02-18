@@ -337,3 +337,65 @@ a {
 nav .container {
   position: relative;
 }
+
+/* Mobile optimization for numbers and stats */
+@media (max-width: 640px) {
+  /* Prevent text cutoff */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Ensure numbers don't overflow */
+  .text-3xl,
+  .text-4xl,
+  .text-5xl,
+  .text-6xl,
+  .text-7xl {
+    line-height: 1.1;
+    word-break: break-word;
+  }
+  
+  /* Grid improvements for mobile */
+  .grid {
+    gap: 1rem;
+  }
+  
+  /* Prevent layout shift on mobile */
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  /* Ensure stats don't collapse */
+  .grid-cols-3 > * {
+    min-width: 0;
+    flex-shrink: 1;
+  }
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+[data-gsap-animation] {
+  will-change: transform, opacity;
+}
+
+/* Ensure consistent grid layout on mobile - prevent collapse */
+@media (max-width: 640px) {
+  .grid-cols-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+  
+  .grid-cols-3 > * {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Prevent number overflow in stats */
+  .grid-cols-3 .text-2xl,
+  .grid-cols-3 .text-3xl {
+    font-size: clamp(1.25rem, 4vw, 1.875rem);
+    line-height: 1.2;
+  }
+}

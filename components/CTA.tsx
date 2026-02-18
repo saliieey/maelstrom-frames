@@ -16,9 +16,16 @@ export default function CTA() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (contentRef.current) {
-        gsap.from(contentRef.current.children, {
+        // Set initial states immediately to prevent flash
+        gsap.set(contentRef.current.children, {
           y: 50,
           opacity: 0,
+        })
+        
+        // Small delay to ensure DOM is ready
+        gsap.to(contentRef.current.children, {
+          y: 0,
+          opacity: 1,
           duration: 0.6,
           ease: 'power2.out',
           stagger: 0.08,
@@ -26,9 +33,15 @@ export default function CTA() {
             trigger: sectionRef.current,
             start: 'top 90%',
             toggleActions: 'play none none none',
+            refreshPriority: -1,
           },
         })
       }
+      
+      // Refresh ScrollTrigger after a brief delay to ensure proper calculation
+      setTimeout(() => {
+        ScrollTrigger.refresh()
+      }, 100)
     }, sectionRef)
 
     return () => ctx.revert()
@@ -74,16 +87,20 @@ export default function CTA() {
             </Link>
           </div>
 
-          {/* Trust Indicators - Perfectly Aligned */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto pt-8 md:pt-12 border-t border-white/20">
+          {/* Trust Indicators - Perfectly Aligned - Mobile Optimized */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-2xl mx-auto pt-6 sm:pt-8 md:pt-12 border-t border-white/20 px-2 sm:px-0 w-full">
             {[
               { number: '500+', label: 'Events' },
               { number: '10+', label: 'Years' },
               { number: '100%', label: 'Satisfaction' },
             ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1 sm:mb-2">{stat.number}</div>
-                <div className="text-white/80 text-xs sm:text-sm uppercase tracking-wider">{stat.label}</div>
+              <div key={i} className="text-center overflow-visible min-w-0 w-full">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2 leading-tight break-words overflow-visible">
+                  {stat.number}
+                </div>
+                <div className="text-white/80 text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider break-words px-1">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>

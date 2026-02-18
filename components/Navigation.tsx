@@ -61,24 +61,18 @@ export default function Navigation() {
               }`}
             >
               <div className="flex items-center gap-3">
-                <span className={`relative text-2xl sm:text-3xl md:text-[2rem] font-serif font-bold tracking-tight transition-all duration-500 ${
+                <span className={`text-2xl sm:text-3xl md:text-[2rem] font-serif font-bold tracking-tight ${
                   isScrolled || !isHomePage
-                    ? 'text-gray-900 group-hover:text-warm-600'
-                    : 'text-white drop-shadow-lg group-hover:text-warm-300'
+                    ? 'text-gray-900'
+                    : 'text-white drop-shadow-lg'
                 }`}>
                   Maelstrom Frames
-                  {/* Hover underline animation */}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-500 ${
-                    isScrolled || !isHomePage
-                      ? 'bg-warm-600 w-0 group-hover:w-full'
-                      : 'bg-white w-0 group-hover:w-full'
-                  }`} />
                 </span>
-                {/* Elegant decorative element with animation */}
-                <span className={`hidden sm:block w-1 h-8 rounded-full transition-all duration-500 ${
+                {/* Elegant decorative element */}
+                <span className={`hidden sm:block w-1 h-8 rounded-full ${
                   isScrolled || !isHomePage
-                    ? 'bg-warm-600/30 group-hover:bg-warm-600 group-hover:h-10 group-hover:shadow-lg group-hover:shadow-warm-600/50'
-                    : 'bg-white/30 group-hover:bg-white/80 group-hover:h-10 group-hover:shadow-lg group-hover:shadow-white/50'
+                    ? 'bg-warm-600/30'
+                    : 'bg-white/30'
                 }`} />
               </div>
             </Link>
