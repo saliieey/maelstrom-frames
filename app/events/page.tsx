@@ -123,7 +123,7 @@ export default function Events() {
               Comprehensive Event Documentation
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-              At Maelstrom Frames, we specialize in capturing the essence of events through professional photography and videography. Whether you're hosting a corporate conference, a cultural festival, a product launch, or any other significant gathering, our experienced team ensures that every important moment is documented with precision and artistry.
+              At Maelstrom Frames, we specialize in capturing the essence of events through professional photography and videography. Whether you&apos;re hosting a corporate conference, a cultural festival, a product launch, or any other significant gathering, our experienced team ensures that every important moment is documented with precision and artistry.
             </p>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
               Our event coverage services go beyond simple documentation. We understand that events are dynamic, multi-faceted experiences that require a comprehensive approach. Our team arrives early to assess the venue, coordinate with event organizers, and set up equipment strategically to capture both the planned activities and spontaneous moments that make events memorable.
@@ -177,7 +177,7 @@ export default function Events() {
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-8 md:mb-12 text-center leading-tight">
-              What's Included
+              What&apos;s Included
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               {[

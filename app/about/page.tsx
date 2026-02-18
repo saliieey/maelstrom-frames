@@ -110,16 +110,16 @@ export default function About() {
             <div className="prose prose-lg max-w-none space-y-8">
               <div className="text-lg text-gray-700 leading-relaxed">
                 <p className="mb-6">
-                  Maelstrom Frames was born from a simple yet profound passion: the desire to capture life's most meaningful moments with artistic excellence. Founded by a team of dedicated photographers and videographers, we have spent years perfecting our craft, learning that every frame tells a story, and every story deserves to be told beautifully.
+                  Maelstrom Frames was born from a simple yet profound passion: the desire to capture life&apos;s most meaningful moments with artistic excellence. Founded by a team of dedicated photographers and videographers, we have spent years perfecting our craft, learning that every frame tells a story, and every story deserves to be told beautifully.
                 </p>
                 <p className="mb-6">
                   What sets us apart is our unwavering commitment to understanding not just what you want to capture, but why it matters to you. We believe that photography and videography are not merely about documenting events—they are about preserving emotions, relationships, and the essence of moments that define who we are. This philosophy drives every project we undertake, from intimate wedding ceremonies to grand corporate events.
                 </p>
                 <p className="mb-6">
-                  Our team brings together diverse talents and perspectives, united by a shared vision of creating visual narratives that resonate deeply. We combine technical expertise with creative intuition, ensuring that each photograph and video we produce is both technically flawless and emotionally compelling. Whether it's the subtle exchange of glances during a wedding ceremony or the energy of a corporate product launch, we capture it all with precision and artistry.
+                  Our team brings together diverse talents and perspectives, united by a shared vision of creating visual narratives that resonate deeply. We combine technical expertise with creative intuition, ensuring that each photograph and video we produce is both technically flawless and emotionally compelling. Whether it&apos;s the subtle exchange of glances during a wedding ceremony or the energy of a corporate product launch, we capture it all with precision and artistry.
                 </p>
                 <p className="mb-6">
-                  Over the years, we have had the privilege of working with countless clients, each with unique stories to tell. These experiences have taught us that the best work happens when there's a genuine connection between the photographer and the subject. That's why we take the time to understand your vision, your style, and your expectations before we even pick up a camera.
+                  Over the years, we have had the privilege of working with countless clients, each with unique stories to tell. These experiences have taught us that the best work happens when there&apos;s a genuine connection between the photographer and the subject. That&apos;s why we take the time to understand your vision, your style, and your expectations before we even pick up a camera.
                 </p>
                 <p>
                   As we continue to grow and evolve, our core values remain unchanged: excellence in execution, authenticity in storytelling, and a genuine passion for what we do. We are not just service providers—we are visual storytellers, memory keepers, and artists dedicated to making your moments immortal.

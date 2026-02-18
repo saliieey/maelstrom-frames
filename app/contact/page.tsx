@@ -105,7 +105,7 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
-            Let's discuss how we can capture your special moments
+            Let&apos;s discuss how we can capture your special moments
           </p>
         </div>
       </section>
@@ -220,7 +220,7 @@ export default function Contact() {
 
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-                    Thank you! Your message has been sent. We'll get back to you soon.
+                    Thank you! Your message has been sent. We&apos;ll get back to you soon.
                   </div>
                 )}
 
@@ -249,7 +249,7 @@ export default function Contact() {
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">Get in Touch</h3>
                   <p className="text-gray-700 mb-6 leading-relaxed text-sm md:text-base">
-                    We'd love to hear from you! Whether you're planning a wedding, organizing a corporate event, or need professional photography services, our team is here to help. Fill out the form or reach out to us directly using the contact information below.
+                    We&apos;d love to hear from you! Whether you&apos;re planning a wedding, organizing a corporate event, or need professional photography services, our team is here to help. Fill out the form or reach out to us directly using the contact information below.
                   </p>
                 </div>
 

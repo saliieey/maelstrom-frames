@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 md:mb-6">Maelstrom Frames</h3>
             <p className="text-gray-400 mb-6 md:mb-8 max-w-md leading-relaxed text-sm md:text-base">
-              Capturing life's most precious moments with artistic excellence. 
+              Capturing life&apos;s most precious moments with artistic excellence. 
               Professional photography and videography services for weddings, events, and special occasions.
             </p>
             <div className="flex space-x-4">

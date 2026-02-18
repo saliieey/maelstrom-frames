@@ -93,7 +93,7 @@ export default function Testimonials() {
             What Our Clients Say
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Don't just take our word for it - hear from our satisfied clients
+            Don&apos;t just take our word for it - hear from our satisfied clients
           </p>
         </div>
 
@@ -109,7 +109,7 @@ export default function Testimonials() {
             >
               {/* Quote Icon */}
               <div className="absolute top-6 right-6 text-warm-100 text-5xl md:text-6xl font-serif leading-none pointer-events-none">
-                "
+                &quot;
               </div>
 
               {/* Rating */}
@@ -128,7 +128,7 @@ export default function Testimonials() {
 
               {/* Testimonial Text */}
               <p className="text-gray-700 mb-6 md:mb-8 leading-relaxed relative z-10 italic text-sm md:text-base md:text-lg flex-grow">
-                "{testimonial.text}"
+                &quot;{testimonial.text}&quot;
               </p>
 
               {/* Author - Perfectly Aligned */}

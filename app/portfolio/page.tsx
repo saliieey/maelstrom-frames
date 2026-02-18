@@ -242,7 +242,7 @@ export default function Portfolio() {
             Ready to Create Your Story?
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Let's discuss how we can capture your special moments
+            Let&apos;s discuss how we can capture your special moments
           </p>
           <Link href="/contact" className="btn btn-primary text-lg px-8 py-4">
             Get in Touch

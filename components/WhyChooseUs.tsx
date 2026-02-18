@@ -94,7 +94,7 @@ export default function WhyChooseUs() {
             Excellence in Every Frame
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            We don't just capture moments—we create timeless visual narratives
+            We don&apos;t just capture moments—we create timeless visual narratives
           </p>
         </div>
 

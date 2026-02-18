@@ -56,7 +56,7 @@ export default function CTA() {
             Ready to Capture Your Story?
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Let's discuss how we can bring your vision to life with our professional photography and videography services. Every moment deserves to be remembered.
+            Let&apos;s discuss how we can bring your vision to life with our professional photography and videography services. Every moment deserves to be remembered.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 md:mb-16">
             <Link

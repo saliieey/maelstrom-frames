@@ -140,7 +140,7 @@ export default function HeroSection() {
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 md:mb-10 leading-[1.05] tracking-tight px-4 opacity-0 drop-shadow-2xl -mt-6 md:-mt-10"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)' }}
           >
-            Capturing Life's<br />Precious Moments
+            Capturing Life&apos;s<br />Precious Moments
           </h1>
           
           {/* Subtitle - Enhanced with better readability */}
