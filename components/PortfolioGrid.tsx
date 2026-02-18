@@ -173,8 +173,8 @@ export default function PortfolioGrid() {
               />
               
               {/* Content Overlay - Perfectly Positioned */}
-              <div className="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-end">
-                <div className="transform translate-y-4 md:translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="absolute inset-0 z-20 px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8 flex flex-col justify-end">
+                <div className="transform translate-y-4 md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
                   <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-3">
                     <span className="px-3 py-1 bg-warm-600/90 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full">
                       {item.category}
@@ -184,7 +184,7 @@ export default function PortfolioGrid() {
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white mb-1 md:mb-2 leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-white/70 text-xs sm:text-sm">{item.date}</p>
+                  <p className="text-white/70 text-xs sm:text-sm mb-0">{item.date}</p>
                 </div>
               </div>
 
@@ -219,7 +219,7 @@ export default function PortfolioGrid() {
               />
               
               {/* Content Overlay - Perfectly Aligned */}
-              <div className="absolute inset-0 z-20 p-4 md:p-6 flex flex-col justify-end">
+              <div className="absolute inset-0 z-20 px-4 md:px-6 pt-4 md:pt-6 pb-6 md:pb-8 flex flex-col justify-end">
                 <div className="transform translate-y-4 md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
                   <span className="text-warm-300 text-xs font-semibold uppercase tracking-wider mb-2 block">
                     {item.category}
@@ -227,7 +227,7 @@ export default function PortfolioGrid() {
                   <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-1 leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-white/60 text-xs sm:text-sm">{item.date}</p>
+                  <p className="text-white/60 text-xs sm:text-sm mb-0">{item.date}</p>
                 </div>
               </div>
             </Link>
