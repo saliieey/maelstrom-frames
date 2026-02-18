@@ -78,6 +78,24 @@ const portfolioItems: PortfolioItem[] = [
     image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     href: '/portfolio/event-3',
   },
+  {
+    id: 7,
+    title: 'Luxury Wedding Celebration',
+    category: 'Wedding',
+    location: 'Paris, France',
+    date: 'December 2023',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    href: '/portfolio/wedding-4',
+  },
+  {
+    id: 8,
+    title: 'Tech Conference 2023',
+    category: 'Event',
+    location: 'London, UK',
+    date: 'November 2023',
+    image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    href: '/portfolio/event-4',
+  },
 ]
 
 export default function PortfolioGrid() {
@@ -195,7 +213,7 @@ export default function PortfolioGrid() {
         </div>
 
         {/* Regular Grid - Perfect 3 Column Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 px-4 sm:px-0 mt-6 md:mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 px-4 sm:px-0 mt-6 md:mt-6">
           {regularItems.map((item, index) => (
             <Link
               key={item.id}

@@ -28,10 +28,17 @@ export default function Portfolio() {
       }
 
       if (gridRef.current) {
-        gsap.from(gridRef.current.children, {
+        // Set initial states to prevent layout shift
+        gsap.set(gridRef.current.children, {
           y: 60,
           opacity: 0,
           scale: 0.98,
+        })
+        
+        gsap.to(gridRef.current.children, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
           duration: 0.6,
           ease: 'power2.out',
           stagger: 0.05,
@@ -192,12 +199,12 @@ export default function Portfolio() {
           </div>
 
           {/* Portfolio Grid - Perfect Alignment */}
-          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 px-4 sm:px-0">
+          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 md:gap-6 px-4 sm:px-0">
             {filteredItems.map((item) => (
               <Link
                 key={item.id}
                 href={`/portfolio/${item.id}`}
-                className="group relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] cursor-pointer w-full"
+                className="group relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] cursor-pointer w-full m-0"
               >
                 <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Image
@@ -209,7 +216,7 @@ export default function Portfolio() {
                 />
                 
                 {/* Content Overlay - Perfectly Positioned */}
-                <div className="absolute inset-0 z-20 p-4 md:p-6 flex flex-col justify-end">
+                <div className="absolute inset-0 z-20 px-4 md:px-6 pt-4 md:pt-6 pb-6 md:pb-8 flex flex-col justify-end">
                   <div className="transform translate-y-4 md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-warm-300 text-xs font-semibold uppercase tracking-wider">
