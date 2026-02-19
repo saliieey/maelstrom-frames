@@ -139,10 +139,10 @@ export default function HeroSection() {
             </span>
           </div>
           
-          {/* Main Title - Enhanced typography with subtle effects */}
+          {/* Main Title - Matching website font style */}
           <h1
             ref={titleRef}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 md:mb-10 leading-[1.05] tracking-tight px-4 opacity-0 drop-shadow-2xl -mt-6 md:-mt-10"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 md:mb-10 leading-tight tracking-tight px-4 opacity-0 drop-shadow-2xl -mt-6 md:-mt-10"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)' }}
           >
             Capturing Life&apos;s<br />Precious Moments
