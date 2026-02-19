@@ -76,10 +76,10 @@ export default function Navigation() {
       <nav 
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-2xl shadow-lg border-b border-gray-200/60 py-4'
+            ? 'bg-white/95 backdrop-blur-2xl shadow-lg border-b border-gray-200/60 pb-4 nav-safe-top-scrolled'
             : isHomePage
-            ? 'bg-gradient-to-b from-black/40 via-black/30 to-transparent backdrop-blur-sm py-6 md:py-7'
-            : 'bg-white/95 backdrop-blur-2xl shadow-md border-b border-gray-200/60 py-5'
+            ? 'bg-gradient-to-b from-black/40 via-black/30 to-transparent backdrop-blur-sm pb-6 md:pb-7 nav-safe-top'
+            : 'bg-white/95 backdrop-blur-2xl shadow-md border-b border-gray-200/60 pb-5 nav-safe-top-other'
         }`}
       >
         {/* Subtle gradient overlay for depth */}

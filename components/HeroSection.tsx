@@ -96,7 +96,12 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+      style={{
+        minHeight: '100vh',
+        minHeight: '-webkit-fill-available', // iOS Safari fix
+        paddingTop: 'env(safe-area-inset-top, 0px)',
+      }}
     >
       {/* Background Image with Parallax */}
       <div 
@@ -125,10 +130,15 @@ export default function HeroSection() {
       </div>
 
       {/* Content - Perfectly Centered with ideal positioning */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center min-h-screen py-20">
+      <div 
+        className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center min-h-screen py-20 hero-safe-top"
+        style={{
+          paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 1.25rem)',
+        }}
+      >
         <div className="w-full flex flex-col items-center">
-          {/* Badge - Enhanced with better styling */}
-          <div className="mb-8 md:mb-10 mt-24 md:mt-32">
+          {/* Badge - Enhanced with better styling and safe area support */}
+          <div className="mb-8 md:mb-10">
             <span className="inline-block px-4 py-2.5 sm:px-6 sm:py-3 bg-white/15 backdrop-blur-xl rounded-full text-white text-[10px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase border border-white/30 shadow-lg shadow-black/20 hover:bg-white/20 transition-all duration-300 whitespace-nowrap">
               Professional Photography & Videography
             </span>

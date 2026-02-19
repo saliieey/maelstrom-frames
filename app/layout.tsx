@@ -21,6 +21,12 @@ export const metadata: Metadata = {
   title: 'Maelstrom Frames - Professional Photography & Videography',
   description: 'Capturing life\'s most precious moments with artistic excellence. Professional wedding photography, event coverage, and cinematic videography.',
   keywords: 'photography, videography, wedding photography, event coverage, professional photographer',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    viewportFit: 'cover', // Support for iOS safe areas
+  },
 }
 
 export default function RootLayout({

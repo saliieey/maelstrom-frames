@@ -44,6 +44,9 @@ body {
   color: #1a1a1a;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Ensure body respects safe areas on iOS */
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* iOS Safari fix */
 }
 
 /* Custom scrollbar */
@@ -126,6 +129,37 @@ h3 {
 .section-padding {
   padding-top: clamp(3rem, 8vw, 6rem);
   padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+/* Navigation safe area support for iOS */
+.nav-safe-top {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+}
+
+.nav-safe-top-scrolled {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+}
+
+.nav-safe-top-other {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1.25rem);
+}
+
+@media (min-width: 768px) {
+  .nav-safe-top {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1.75rem);
+  }
+}
+
+/* Hero section safe area support for iOS - accounts for navigation height */
+.hero-safe-top {
+  /* Safe area + navigation height (1.5rem padding + ~2.5rem logo) + buffer */
+  padding-top: calc(env(safe-area-inset-top, 0px) + 7.5rem);
+}
+
+@media (min-width: 768px) {
+  .hero-safe-top {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 8.5rem);
+  }
 }
 
 @media (min-width: 768px) {
@@ -367,6 +401,29 @@ nav .container {
   .grid-cols-3 > * {
     min-width: 0;
     flex-shrink: 1;
+  }
+
+  /* Mobile Stats Cards - Same design as desktop with scroll hover */
+  .mobile-stat-card {
+    /* Same styling as desktop - no special mobile overrides */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow, border-color;
+  }
+
+  /* Active state when scrolling into view - mimics desktop hover exactly */
+  .mobile-stat-card.mobile-stat-active {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: rgba(227, 122, 46, 0.5);
+  }
+
+  /* Show decorative top line when active (same as desktop hover) */
+  .mobile-stat-card.mobile-stat-active > div.absolute.top-0 {
+    opacity: 1 !important;
+  }
+
+  /* Show bottom accent line when active (same as desktop hover) */
+  .mobile-stat-card.mobile-stat-active > div.absolute.bottom-0 {
+    width: 5rem !important;
   }
 }
 
