@@ -96,7 +96,7 @@ export default function Navigation() {
                 isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
               }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center">
                 <span className={`text-2xl sm:text-3xl md:text-[2rem] font-serif font-bold tracking-tight ${
                   isScrolled || !isHomePage
                     ? 'text-gray-900'
@@ -104,12 +104,6 @@ export default function Navigation() {
                 }`}>
                   Maelstrom Frames
                 </span>
-                {/* Elegant decorative element */}
-                <span className={`hidden sm:block w-1 h-8 rounded-full ${
-                  isScrolled || !isHomePage
-                    ? 'bg-warm-600/30'
-                    : 'bg-white/30'
-                }`} />
               </div>
             </Link>
 
