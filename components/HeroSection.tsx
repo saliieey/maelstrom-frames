@@ -96,12 +96,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
-      style={{
-        minHeight: '100vh',
-        minHeight: '-webkit-fill-available', // iOS Safari fix
-        paddingTop: 'env(safe-area-inset-top, 0px)',
-      }}
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden hero-section-safe"
     >
       {/* Background Image with Parallax */}
       <div 

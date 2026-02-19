@@ -150,6 +150,12 @@ h3 {
   }
 }
 
+/* Hero section safe area support for iOS */
+.hero-section-safe {
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* iOS Safari fix */
+}
+
 /* Hero section safe area support for iOS - accounts for navigation height */
 .hero-safe-top {
   /* Safe area + navigation height (1.5rem padding + ~2.5rem logo) + buffer */
