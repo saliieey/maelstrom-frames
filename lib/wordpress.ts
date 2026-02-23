@@ -27,13 +27,26 @@ interface RawWorkFrame {
   }
 }
 
+function decodeHtmlEntities(text: string): string {
+  if (!text) return ''
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+}
+
 function transformWorkFrame(item: RawWorkFrame): WorkFrame {
   const media = item._embedded?.['wp:featuredmedia']?.[0]
   const imageUrl = media?.source_url ?? ''
+  const rawTitle = item.title?.rendered ?? ''
 
   return {
     id: item.id,
-    title: item.title?.rendered ?? '',
+    title: decodeHtmlEntities(rawTitle),
     image: imageUrl,
     place: item.acf?.place ?? '',
     date: item.acf?.date ?? '',
