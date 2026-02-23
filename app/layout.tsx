@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Urbanist, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import SmoothScroll from '@/components/SmoothScroll'
 
-const inter = Inter({ 
+const urbanist = Urbanist({ 
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-urbanist',
   display: 'swap',
 })
 
@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+      <body className={`${urbanist.variable} ${playfair.variable} font-sans antialiased`}>
         <SmoothScroll>
           <Navigation />
           <main className="min-h-screen">

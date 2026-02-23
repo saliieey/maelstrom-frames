@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-urbanist)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-playfair)', 'serif'],
       },
       animation: {

@@ -78,7 +78,7 @@ npm start
 - **Styling**: Tailwind CSS
 - **Animations**: GSAP (GreenSock Animation Platform)
 - **Smooth Scroll**: Lenis
-- **Fonts**: Inter, Playfair Display (Google Fonts)
+- **Fonts**: Urbanist, Playfair Display (Google Fonts)
 
 ## Project Structure
 
