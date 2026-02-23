@@ -9,6 +9,7 @@ export interface WorkFrame {
   main_category: 'wedding' | 'event'
   wedding_type: 'hindu' | 'muslim' | 'christian' | null
   media_type: 'photo' | 'video'
+  video_url: string
 }
 
 interface RawWorkFrame {
@@ -21,6 +22,7 @@ interface RawWorkFrame {
     main_category?: string
     wedding_type?: string | null
     media_type?: string
+    video_url?: string
   }
   _embedded?: {
     'wp:featuredmedia'?: Array<{ source_url: string }>
@@ -53,6 +55,7 @@ function transformWorkFrame(item: RawWorkFrame): WorkFrame {
     main_category: (item.acf?.main_category === 'wedding' ? 'wedding' : 'event') as 'wedding' | 'event',
     wedding_type: (item.acf?.wedding_type as 'hindu' | 'muslim' | 'christian') || null,
     media_type: (item.acf?.media_type === 'video' ? 'video' : 'photo') as 'photo' | 'video',
+    video_url: item.acf?.video_url ?? '',
   }
 }
 
