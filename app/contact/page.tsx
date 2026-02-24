@@ -110,8 +110,8 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="section-padding bg-white">
+      {/* Contact Section - mobile: extra bottom padding so Business Hours is clear of footer */}
+      <section className="section-padding bg-white max-sm:pb-32">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto px-4 sm:px-0">
             {/* Contact Form */}
@@ -320,9 +320,9 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-gray-200">
-                  <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">Business Hours</h3>
-                  <div className="space-y-2 text-gray-700 text-sm md:text-base">
+                <div className="pt-6 border-t border-gray-200 max-sm:mb-8 max-sm:pr-0">
+                  <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4 max-sm:text-left">Business Hours</h3>
+                  <div className="space-y-2 text-gray-700 text-sm md:text-base max-sm:text-left max-sm:space-y-3">
                     <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                     <p>Saturday: 10:00 AM - 4:00 PM</p>
                     <p>Sunday: By Appointment</p>
