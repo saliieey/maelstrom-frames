@@ -9,30 +9,50 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+const WeddingIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+  </svg>
+)
+
+const EventIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+  </svg>
+)
+
+const VideoIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+  </svg>
+)
+
+const PortraitIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  </svg>
+)
+
 const services = [
   {
     title: 'Wedding Photography',
     description: 'Capturing your special day with artistic vision and attention to detail. Every moment, every emotion, beautifully preserved.',
-    icon: '💍',
-    color: 'from-pink-500 to-rose-600',
+    Icon: WeddingIcon,
   },
   {
     title: 'Event Coverage',
     description: 'Professional documentation of corporate events, festivals, and celebrations. Comprehensive coverage that tells your story.',
-    icon: '🎉',
-    color: 'from-blue-500 to-indigo-600',
+    Icon: EventIcon,
   },
   {
     title: 'Videography',
     description: 'Cinematic storytelling that brings your memories to life. Motion, emotion, and artistry combined.',
-    icon: '🎬',
-    color: 'from-purple-500 to-violet-600',
+    Icon: VideoIcon,
   },
   {
     title: 'Portrait Sessions',
     description: 'Elegant and timeless portraits for individuals, families, and couples. Professional studio and location photography.',
-    icon: '📸',
-    color: 'from-amber-500 to-orange-600',
+    Icon: PortraitIcon,
   },
 ]
 
@@ -102,7 +122,9 @@ export default function ServicesPreview() {
 
         {/* Services Grid - Perfect Alignment */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16 px-4 sm:px-0">
-          {services.map((service, index) => (
+          {services.map((service, index) => {
+            const Icon = service.Icon
+            return (
             <div
               key={service.title}
               ref={(el) => {
@@ -110,15 +132,11 @@ export default function ServicesPreview() {
               }}
               className="group relative bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-warm-200 h-full flex flex-col"
             >
-              {/* Gradient Background on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-500`} />
-              
-              {/* Icon */}
+              {/* Icon - Professional style matching WhyChooseUs */}
               <div className="relative mb-4 md:mb-6">
-                <div className="text-5xl md:text-6xl mb-4 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                  {service.icon}
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-warm-100 flex items-center justify-center text-warm-600 group-hover:bg-warm-200 group-hover:text-warm-700 transform group-hover:scale-105 group-hover:rotate-3 transition-all duration-500">
+                  <Icon className="w-7 h-7 md:w-8 md:h-8" />
                 </div>
-                <div className="absolute -top-2 -right-2 w-16 h-16 bg-warm-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
               </div>
 
               {/* Content */}
@@ -145,7 +163,7 @@ export default function ServicesPreview() {
               {/* Decorative Line */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-warm-500 to-warm-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
             </div>
-          ))}
+          )})}
         </div>
 
         {/* CTA Button - Centered */}

@@ -8,26 +8,52 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+const ArtisticIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+  </svg>
+)
+
+const TeamIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+  </svg>
+)
+
+const CameraIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 13v7a2 2 0 01-2 2H7a2 2 0 01-2-2v-7" />
+  </svg>
+)
+
+const SparkleIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+  </svg>
+)
+
 const features = [
   {
     title: 'Artistic Excellence',
     description: 'Every frame is crafted with artistic vision, ensuring your memories are not just documented, but transformed into works of art.',
-    icon: '🎨',
+    Icon: ArtisticIcon,
   },
   {
     title: 'Professional Team',
     description: 'Our experienced photographers and videographers bring years of expertise to every project, ensuring flawless execution.',
-    icon: '👥',
+    Icon: TeamIcon,
   },
   {
     title: 'Cutting-Edge Technology',
     description: 'We use the latest professional equipment and editing software to deliver stunning, high-quality results that exceed expectations.',
-    icon: '📷',
+    Icon: CameraIcon,
   },
   {
     title: 'Personalized Service',
     description: 'Every client is unique, and we tailor our approach to match your style, preferences, and vision for your special occasion.',
-    icon: '✨',
+    Icon: SparkleIcon,
   },
 ]
 
@@ -100,7 +126,9 @@ export default function WhyChooseUs() {
 
         {/* Features Grid - Perfect 4 Column */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto px-4 sm:px-0">
-          {features.map((feature, index) => (
+          {features.map((feature, index) => {
+            const Icon = feature.Icon
+            return (
             <div
               key={feature.title}
               ref={(el) => {
@@ -110,8 +138,8 @@ export default function WhyChooseUs() {
             >
               {/* Icon */}
               <div className="mb-4 md:mb-6">
-                <div className="text-5xl md:text-6xl transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                  {feature.icon}
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-warm-100 flex items-center justify-center text-warm-600 group-hover:bg-warm-200 group-hover:text-warm-700 transform group-hover:scale-105 group-hover:rotate-3 transition-all duration-500">
+                  <Icon className="w-7 h-7 md:w-8 md:h-8" />
                 </div>
               </div>
 
@@ -126,7 +154,7 @@ export default function WhyChooseUs() {
               {/* Decorative Element */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-warm-100 rounded-full -mr-12 -mt-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl pointer-events-none" />
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </section>
