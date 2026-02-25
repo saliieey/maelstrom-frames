@@ -63,13 +63,13 @@ export default function Footer() {
             <h4 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Contact</h4>
             <ul className="space-y-3 text-gray-400">
               <li>
-                <a href="mailto:info@maelstromframes.com" className="hover:text-warm-400 transition-colors text-sm md:text-base block">
-                  info@maelstromframes.com
+                <a href="mailto:maelstromframes@gmail.com" className="hover:text-warm-400 transition-colors text-sm md:text-base block">
+                  maelstromframes@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+1234567890" className="hover:text-warm-400 transition-colors text-sm md:text-base block">
-                  +1 (234) 567-890
+                <a href="tel:+917907742698" className="hover:text-warm-400 transition-colors text-sm md:text-base block">
+                  +91 7907742698
                 </a>
               </li>
               <li className="pt-2">

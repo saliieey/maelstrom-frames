@@ -163,7 +163,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-600 focus:border-transparent outline-none transition-all"
-                    placeholder="+1 (234) 567-890"
+                    placeholder="+91 7907742698"
                   />
                 </div>
 
@@ -269,10 +269,10 @@ export default function Contact() {
                     <div>
                       <p className="font-medium text-gray-900 mb-1">Email</p>
                       <a
-                        href="mailto:info@maelstromframes.com"
+                        href="mailto:maelstromframes@gmail.com"
                         className="text-warm-600 hover:text-warm-700 transition-colors text-sm md:text-base"
                       >
-                        info@maelstromframes.com
+                        maelstromframes@gmail.com
                       </a>
                     </div>
                   </div>
@@ -292,10 +292,10 @@ export default function Contact() {
                     <div>
                       <p className="font-medium text-gray-900 mb-1">Phone</p>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+917907742698"
                         className="text-warm-600 hover:text-warm-700 transition-colors text-sm md:text-base"
                       >
-                        +1 (234) 567-890
+                        +91 7907742698
                       </a>
                     </div>
                   </div>

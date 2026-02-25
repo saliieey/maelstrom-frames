@@ -357,16 +357,16 @@ export default function Navigation() {
             {/* Contact Info */}
             <div className="mt-4 space-y-2 text-center">
               <a 
-                href="tel:+1234567890" 
+                href="tel:+917907742698" 
                 className="block text-xs font-medium text-gray-600 hover:text-warm-600 transition-colors"
               >
-                +1 (234) 567-890
+                +91 7907742698
               </a>
               <a 
-                href="mailto:info@maelstromframes.com" 
+                href="mailto:maelstromframes@gmail.com" 
                 className="block text-xs text-gray-500 hover:text-warm-600 transition-colors"
               >
-                info@maelstromframes.com
+                maelstromframes@gmail.com
               </a>
             </div>
           </div>
