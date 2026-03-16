@@ -109,12 +109,13 @@ export default function HeroSection() {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
         <Image
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-          alt="Hero"
+          src="/images/hero/hero-banner.jpg"
+          alt="Professional Photography & Videography"
           fill
           priority
           className="object-cover"
           quality={90}
+          unoptimized
         />
       </div>
 

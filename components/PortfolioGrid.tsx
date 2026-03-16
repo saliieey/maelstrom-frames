@@ -10,6 +10,15 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+function getYouTubeEmbedUrl(url: string): string | null {
+  if (!url?.trim()) return null
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s?]+)/,
+  ]
+  const match = url.match(patterns[0])
+  return match ? `https://www.youtube.com/embed/${match[1]}` : null
+}
+
 interface PortfolioItem {
   id: number
   title: string
@@ -19,18 +28,20 @@ interface PortfolioItem {
   image: string
   href: string
   featured?: boolean
+  videoUrl?: string
 }
 
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: 'Elegant Garden Wedding',
+    title: 'Wedding Highlights',
     category: 'Wedding',
-    location: 'Tuscany, Italy',
-    date: 'June 2024',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    location: 'Calicut',
+    date: 'Feb 2026',
+    image: '/images/portfolio/portfolio-1.jpg',
     href: '/portfolio/wedding-1',
     featured: true,
+    videoUrl: 'https://youtu.be/0oEx8q_X10s?si=iR7CdqMoYaVaj0qX',
   },
   {
     id: 2,
@@ -38,18 +49,19 @@ const portfolioItems: PortfolioItem[] = [
     category: 'Event',
     location: 'New York, USA',
     date: 'May 2024',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/portfolio/portfolio-2.jpg',
     href: '/portfolio/event-1',
   },
   {
     id: 3,
-    title: 'Intimate Beach Ceremony',
+    title: 'Wedding Highlights',
     category: 'Wedding',
-    location: 'Maldives',
-    date: 'April 2024',
-    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    location: 'Calicut',
+    date: 'Dec 2025',
+    image: '/images/portfolio/portfolio-3.jpg',
     href: '/portfolio/wedding-2',
     featured: true,
+    videoUrl: 'https://youtu.be/eE3nD-DPExQ?si=gw70tK8KUWF-pLHT',
   },
   {
     id: 4,
@@ -57,7 +69,7 @@ const portfolioItems: PortfolioItem[] = [
     category: 'Event',
     location: 'Coachella, USA',
     date: 'March 2024',
-    image: 'https://images.unsplash.com/photo-1478147427282-58a87a120781?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/portfolio/portfolio-4.jpg',
     href: '/portfolio/event-2',
   },
   {
@@ -66,7 +78,7 @@ const portfolioItems: PortfolioItem[] = [
     category: 'Wedding',
     location: 'Santorini, Greece',
     date: 'February 2024',
-    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/portfolio/portfolio-5.jpg',
     href: '/portfolio/wedding-3',
   },
   {
@@ -75,7 +87,7 @@ const portfolioItems: PortfolioItem[] = [
     category: 'Event',
     location: 'San Francisco, USA',
     date: 'January 2024',
-    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/portfolio/portfolio-6.jpg',
     href: '/portfolio/event-3',
   },
   {
@@ -84,7 +96,7 @@ const portfolioItems: PortfolioItem[] = [
     category: 'Wedding',
     location: 'Paris, France',
     date: 'December 2023',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/portfolio/portfolio-7.jpg',
     href: '/portfolio/wedding-4',
   },
   {
@@ -93,7 +105,7 @@ const portfolioItems: PortfolioItem[] = [
     category: 'Event',
     location: 'London, UK',
     date: 'November 2023',
-    image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/portfolio/portfolio-8.jpg',
     href: '/portfolio/event-4',
   },
 ]
@@ -166,50 +178,86 @@ export default function PortfolioGrid() {
           </p>
         </div>
 
-        {/* Featured Items - Large - Perfect Grid */}
+        {/* Featured Items - Large - Video players (first row) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 px-4 sm:px-0">
-          {featuredItems.map((item, index) => (
-            <Link
-              key={item.id}
-              href={item.href}
-              ref={(el) => {
-                itemsRef.current[index] = el
-              }}
-              onMouseEnter={() => setHoveredId(item.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer w-full"
-            >
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className={`object-cover transition-all duration-700 ${
-                  hoveredId === item.id ? 'scale-110' : 'scale-100'
-                }`}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              
-              {/* Content Overlay - Perfectly Positioned */}
-              <div className="absolute inset-0 z-20 px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8 flex flex-col justify-end">
-                <div className="transform translate-y-4 md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-3">
-                    <span className="px-3 py-1 bg-warm-600/90 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full">
-                      {item.category}
-                    </span>
-                    <span className="text-white/80 text-xs sm:text-sm">{item.location}</span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white mb-1 md:mb-2 leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-white/70 text-xs sm:text-sm mb-0">{item.date}</p>
-                </div>
-              </div>
+          {featuredItems.map((item, index) => {
+            const embedUrl = item.videoUrl ? getYouTubeEmbedUrl(item.videoUrl) : null
+            const isVideo = !!embedUrl
 
-              {/* Hover Effect Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-warm-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-30" />
-            </Link>
-          ))}
+            if (isVideo && embedUrl) {
+              return (
+                <div
+                  key={item.id}
+                  ref={(el) => {
+                    itemsRef.current[index] = el
+                  }}
+                  className="group relative overflow-hidden rounded-2xl aspect-[4/3] w-full bg-gray-900"
+                >
+                  <iframe
+                    src={embedUrl}
+                    title={item.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  {/* Bottom gradient + label overlay (pointer-events-none so clicks reach the iframe) */}
+                  <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 z-20 px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8 flex flex-col justify-end pointer-events-none">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2">
+                      <span className="px-3 py-1 bg-warm-600/90 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full">
+                        {item.category}
+                      </span>
+                      <span className="text-white/80 text-xs sm:text-sm">{item.location}</span>
+                    </div>
+                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-1 leading-tight tracking-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/70 text-xs sm:text-sm mb-0">{item.date}</p>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-warm-600 z-20 pointer-events-none" />
+                </div>
+              )
+            }
+
+            return (
+              <Link
+                key={item.id}
+                href={item.href}
+                ref={(el) => {
+                  itemsRef.current[index] = el
+                }}
+                onMouseEnter={() => setHoveredId(item.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer w-full"
+              >
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className={`object-cover transition-all duration-700 ${
+                    hoveredId === item.id ? 'scale-110' : 'scale-100'
+                  }`}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 z-20 px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8 flex flex-col justify-end">
+                  <div className="transform translate-y-4 md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-3">
+                      <span className="px-3 py-1 bg-warm-600/90 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full">
+                        {item.category}
+                      </span>
+                      <span className="text-white/80 text-xs sm:text-sm">{item.location}</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white mb-1 md:mb-2 leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/70 text-xs sm:text-sm mb-0">{item.date}</p>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-warm-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-30" />
+              </Link>
+            )
+          })}
         </div>
 
         {/* Regular Grid - Perfect 3 Column Layout */}
