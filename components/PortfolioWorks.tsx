@@ -1,14 +1,8 @@
 'use client'
 
-import { useMemo, useState, useRef, useEffect } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { useMemo, useState, useEffect } from 'react'
 import Image from 'next/image'
 import type { WorkFrame } from '@/lib/wordpress'
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
 
 function getYouTubeEmbedUrl(url: string): string | null {
   if (!url?.trim()) return null
@@ -120,6 +114,16 @@ function filterWorks(works: WorkFrame[], filterId: string): WorkFrame[] {
   )
 }
 
+function filterMergedWorks(works: MergedWork[], filterId: string): MergedWork[] {
+  if (filterId === 'all') return works
+  if (filterId === 'event') return works.filter((w) => w.main_category === 'event')
+  if (filterId === 'save-the-date') return works.filter((w) => w.main_category === 'save-the-date')
+  if (filterId === 'wedding') return works.filter((w) => w.main_category === 'wedding')
+  return works.filter(
+    (w) => w.main_category === 'wedding' && w.wedding_type === filterId
+  )
+}
+
 function MediaTypeBadge({ hasPhoto, hasVideo }: { hasPhoto: boolean; hasVideo: boolean }) {
   if (hasPhoto && hasVideo) {
     return (
@@ -175,7 +179,6 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
   const [detailModal, setDetailModal] = useState<MergedWork | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [modalView, setModalView] = useState<ModalView>('video')
-  const gridRef = useRef<HTMLDivElement>(null)
 
   const openDetail = (item: MergedWork) => {
     setDetailModal(item)
@@ -207,41 +210,16 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
     ? activeSubFilter
     : activeFilter
 
-  const filteredWorks = useMemo(
-    () => filterWorks(works, effectiveFilter),
-    [works, effectiveFilter]
+  const mergedWorks = useMemo(() => mergeWorksByProject(works), [works])
+  const filteredMergedWorks = useMemo(
+    () => filterMergedWorks(mergedWorks, effectiveFilter),
+    [mergedWorks, effectiveFilter]
   )
-
-  const mergedWorks = useMemo(() => mergeWorksByProject(filteredWorks), [filteredWorks])
 
   const handleMainFilter = (id: string) => {
     setActiveFilter(id)
     setActiveSubFilter(null)
   }
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (gridRef.current) {
-        const items = Array.from(gridRef.current.children) as HTMLElement[]
-        items.forEach((item, index) => {
-          gsap.fromTo(
-            item,
-            { opacity: 0, y: 20, scale: 0.98 },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.35,
-              ease: 'power2.out',
-              delay: index * 0.03,
-            }
-          )
-        })
-      }
-    }, [mergedWorks])
-
-    return () => ctx.revert()
-  }, [mergedWorks])
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -269,7 +247,7 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
               <button
                 key={filter.id}
                 onClick={() => handleMainFilter(filter.id)}
-                className={`px-6 md:px-8 py-3 md:py-3.5 rounded-full font-semibold transition-all duration-300 text-sm md:text-base ${
+                className={`px-6 md:px-8 py-3 md:py-3.5 rounded-full font-semibold transition-all duration-300 text-sm md:text-base touch-manipulation ${
                   activeFilter === filter.id
                     ? 'bg-warm-600 text-white shadow-lg shadow-warm-600/30 scale-105'
                     : 'bg-warm-100 text-gray-700 hover:bg-warm-200 hover:scale-105'
@@ -292,7 +270,7 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
             <div className="flex flex-wrap justify-center gap-3 md:gap-4 px-4">
               <button
                 onClick={() => setActiveSubFilter(null)}
-                className={`px-5 md:px-7 py-2.5 md:py-3 rounded-full font-medium transition-all duration-300 text-xs md:text-sm ${
+                className={`px-5 md:px-7 py-2.5 md:py-3 rounded-full font-medium transition-all duration-300 text-xs md:text-sm touch-manipulation ${
                   activeSubFilter === null
                     ? 'bg-gray-900 text-white shadow-md scale-105'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105'
@@ -304,7 +282,7 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
                 <button
                   key={subFilter.id}
                   onClick={() => setActiveSubFilter(subFilter.id)}
-                  className={`px-5 md:px-7 py-2.5 md:py-3 rounded-full font-medium transition-all duration-300 text-xs md:text-sm ${
+                  className={`px-5 md:px-7 py-2.5 md:py-3 rounded-full font-medium transition-all duration-300 text-xs md:text-sm touch-manipulation ${
                     activeSubFilter === subFilter.id
                       ? 'bg-warm-600 text-white shadow-md shadow-warm-600/30 scale-105'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105'
@@ -318,11 +296,8 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
         )}
 
         {/* Grid */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 px-4 sm:px-0"
-        >
-          {mergedWorks.map((item) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 px-4 sm:px-0">
+          {filteredMergedWorks.map((item, index) => (
             <article
               key={`${item.id}-${item.title}`}
               onClick={() => openDetail(item)}
@@ -342,6 +317,9 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
                 fill
                 className="object-cover object-[50%_25%] group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                priority={index < 3}
+                loading={index < 6 ? 'eager' : 'lazy'}
+                quality={85}
               />
               <div className="absolute inset-0 z-20 px-4 md:px-6 pt-4 md:pt-6 pb-6 md:pb-8 flex flex-col justify-end">
                 <div className="transform translate-y-4 md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
@@ -365,7 +343,7 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
           ))}
         </div>
 
-        {mergedWorks.length === 0 && (
+        {filteredMergedWorks.length === 0 && (
           <div className="text-center py-16 px-4">
             <p className="text-gray-500 text-lg">No works found for this filter.</p>
           </div>
