@@ -29,6 +29,7 @@ interface PortfolioItem {
   href: string
   featured?: boolean
   videoUrl?: string
+  imageClassName?: string
 }
 
 const portfolioItems: PortfolioItem[] = [
@@ -45,12 +46,13 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 2,
-    title: 'Corporate Annual Meeting',
-    category: 'Event',
+    title: 'Vyshnav & Sandra - Love Marriage',
+    category: 'Wedding',
     location: 'New York, USA',
-    date: 'May 2024',
+    date: 'Jan 2026',
     image: '/images/portfolio/portfolio-2.jpg',
     href: '/portfolio/event-1',
+    imageClassName: 'object-top',
   },
   {
     id: 3,
@@ -65,16 +67,18 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 4,
-    title: 'Music Festival Coverage',
-    category: 'Event',
+    title: 'Save the Date - Akshay & Abhiramy',
+    category: 'Save the Date',
     location: 'Coachella, USA',
-    date: 'March 2024',
+    date: 'Dec 2025',
     image: '/images/portfolio/portfolio-4.jpg',
     href: '/portfolio/event-2',
+    // Focus lower so the couple stays in-frame (this image has subjects near the bottom)
+    imageClassName: 'object-[50%_80%]',
   },
   {
     id: 5,
-    title: 'Destination Wedding',
+    title: 'Grand Wedding Ceremony',
     category: 'Wedding',
     location: 'Santorini, Greece',
     date: 'February 2024',
@@ -83,28 +87,28 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 6,
-    title: 'Product Launch Event',
-    category: 'Event',
+    title: 'Save the Date - Sniya & Sreejith',
+    category: 'Save the Date',
     location: 'San Francisco, USA',
-    date: 'January 2024',
+    date: 'Jan 2026',
     image: '/images/portfolio/portfolio-6.jpg',
     href: '/portfolio/event-3',
   },
   {
     id: 7,
-    title: 'Luxury Wedding Celebration',
-    category: 'Wedding',
+    title: 'Save the Date - Arun & Nila',
+    category: 'Save the Date',
     location: 'Paris, France',
-    date: 'December 2023',
+    date: 'Jan 2026',
     image: '/images/portfolio/portfolio-7.jpg',
     href: '/portfolio/wedding-4',
   },
   {
     id: 8,
-    title: 'Tech Conference 2023',
-    category: 'Event',
+    title: 'Elegant Wedding Portrait',
+    category: 'Wedding',
     location: 'London, UK',
-    date: 'November 2023',
+    date: 'Feb 2026',
     image: '/images/portfolio/portfolio-8.jpg',
     href: '/portfolio/event-4',
   },
@@ -278,7 +282,7 @@ export default function PortfolioGrid() {
                 src={item.image}
                 alt={item.title}
                 fill
-                className={`object-cover transition-all duration-700 ${
+                className={`object-cover ${item.imageClassName ?? ''} transition-all duration-700 ${
                   hoveredId === item.id ? 'scale-110' : 'scale-100'
                 }`}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

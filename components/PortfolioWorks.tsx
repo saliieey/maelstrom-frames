@@ -23,6 +23,7 @@ const MAIN_FILTERS = [
   { id: 'all', label: 'All Work' },
   { id: 'wedding', label: 'Weddings' },
   { id: 'event', label: 'Events' },
+  { id: 'save-the-date', label: 'Save the Date' },
 ] as const
 
 const WEDDING_SUB_FILTERS = [
@@ -35,9 +36,18 @@ function normalizeKey(s: string): string {
   return (s || '').toLowerCase().trim().replace(/\s+/g, ' ')
 }
 
-/** Group key: same project = same title (groups all images/videos for same person/event) */
+/**
+ * Group key for merging related media.
+ * Using only title caused different works with same names to merge into one card.
+ * Include category/place/date to keep distinct works visible.
+ */
 function getProjectKey(w: WorkFrame): string {
-  return normalizeKey(w.title)
+  return [
+    normalizeKey(w.title),
+    normalizeKey(w.main_category),
+    normalizeKey(w.place),
+    normalizeKey(w.date),
+  ].join('::')
 }
 
 /** Merged project: one card per event, collecting ALL images + video */
@@ -48,7 +58,7 @@ interface MergedWork {
   images: string[]
   place: string
   date: string
-  main_category: 'wedding' | 'event'
+  main_category: 'wedding' | 'event' | 'save-the-date'
   wedding_type: 'hindu' | 'muslim' | 'christian' | null
   hasPhoto: boolean
   hasVideo: boolean
@@ -92,6 +102,7 @@ function mergeWorksByProject(works: WorkFrame[]): MergedWork[] {
 
 function getCategoryLabel(item: MergedWork): string {
   if (item.main_category === 'event') return 'Event'
+  if (item.main_category === 'save-the-date') return 'Save the Date'
   if (item.wedding_type) {
     const type = item.wedding_type.charAt(0).toUpperCase() + item.wedding_type.slice(1)
     return `${type} Wedding`
@@ -102,6 +113,7 @@ function getCategoryLabel(item: MergedWork): string {
 function filterWorks(works: WorkFrame[], filterId: string): WorkFrame[] {
   if (filterId === 'all') return works
   if (filterId === 'event') return works.filter((w) => w.main_category === 'event')
+  if (filterId === 'save-the-date') return works.filter((w) => w.main_category === 'save-the-date')
   if (filterId === 'wedding') return works.filter((w) => w.main_category === 'wedding')
   return works.filter(
     (w) => w.main_category === 'wedding' && w.wedding_type === filterId
@@ -314,7 +326,7 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
             <article
               key={`${item.id}-${item.title}`}
               onClick={() => openDetail(item)}
-              className="group relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] w-full cursor-pointer"
+              className="group relative overflow-hidden rounded-3xl aspect-[4/3] w-full cursor-pointer border border-gray-100/70 bg-white shadow-sm hover:shadow-xl transition-all duration-500"
             >
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               {item.hasVideo && (
@@ -328,7 +340,7 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
                 src={item.image || fallbackImage}
                 alt={item.title}
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                className="object-cover object-[50%_25%] group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 z-20 px-4 md:px-6 pt-4 md:pt-6 pb-6 md:pb-8 flex flex-col justify-end">

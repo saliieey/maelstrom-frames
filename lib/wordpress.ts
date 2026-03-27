@@ -6,10 +6,27 @@ export interface WorkFrame {
   image: string
   place: string
   date: string
-  main_category: 'wedding' | 'event'
+  main_category: 'wedding' | 'event' | 'save-the-date'
   wedding_type: 'hindu' | 'muslim' | 'christian' | null
   media_type: 'photo' | 'video'
   video_url: string
+}
+
+function normalizeMainCategory(value: string | undefined | null): WorkFrame['main_category'] {
+  const raw = (value ?? '').toString().toLowerCase().trim()
+  if (!raw) return 'event'
+
+  // Normalize common variations coming from ACF select values
+  const v = raw.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ')
+
+  if (v === 'wedding') return 'wedding'
+
+  // ACF choice label is "Save the Date" and value may be "save the date" (with spaces)
+  if (v.replace(/\s+/g, '') === 'savethedate' || (v.includes('save') && v.includes('date'))) {
+    return 'save-the-date'
+  }
+
+  return 'event'
 }
 
 interface RawWorkFrame {
@@ -52,7 +69,7 @@ function transformWorkFrame(item: RawWorkFrame): WorkFrame {
     image: imageUrl,
     place: item.acf?.place ?? '',
     date: item.acf?.date ?? '',
-    main_category: (item.acf?.main_category === 'wedding' ? 'wedding' : 'event') as 'wedding' | 'event',
+    main_category: normalizeMainCategory(item.acf?.main_category),
     wedding_type: (item.acf?.wedding_type as 'hindu' | 'muslim' | 'christian') || null,
     media_type: (item.acf?.media_type === 'video' ? 'video' : 'photo') as 'photo' | 'video',
     video_url: item.acf?.video_url ?? '',
