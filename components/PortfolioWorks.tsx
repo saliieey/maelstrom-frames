@@ -455,23 +455,16 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
                 </div>
               )}
 
-              {/* Text overlay - fixed to viewport bottom, full width */}
-              <div className="fixed bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/90 to-transparent pt-24 pb-6 md:pt-28 md:pb-8 px-4 md:px-8 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-                <div className="max-w-4xl mx-auto text-center">
-                  <span className="inline-block px-3 py-1 rounded-full bg-warm-600/90 text-white text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3 md:mb-4">
+              {/* Minimal project label to keep full image visibility */}
+              <div className="absolute bottom-4 left-4 right-4 z-20 pointer-events-none sm:bottom-6 sm:left-6 sm:right-6">
+                <div className="inline-flex max-w-full items-center gap-2 rounded-full bg-black/55 px-3 py-1.5 backdrop-blur-sm border border-white/10">
+                  <span className="text-white text-xs sm:text-sm font-medium truncate">
+                    {detailModal.title}
+                  </span>
+                  <span className="text-white/50 text-xs">•</span>
+                  <span className="text-white/80 text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap">
                     {getCategoryLabel(detailModal)}
                   </span>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 md:mb-4 leading-tight">
-                    {detailModal.title}
-                  </h2>
-                  <div className="flex flex-wrap justify-center gap-3 md:gap-4 text-white/80 text-sm md:text-base">
-                    {detailModal.place && <span>{detailModal.place}</span>}
-                    {detailModal.place && detailModal.date && <span className="text-white/50">•</span>}
-                    {detailModal.date && <span>{detailModal.date}</span>}
-                  </div>
-                  <div className="mt-3 md:mt-4 [&_span]:!text-white/80 [&_svg]:!text-white/80">
-                    <MediaTypeBadge hasPhoto={detailModal.hasPhoto} hasVideo={detailModal.hasVideo} />
-                  </div>
                 </div>
               </div>
             </div>
