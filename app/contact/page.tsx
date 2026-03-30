@@ -3,6 +3,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import {
+  isReasonableMessage,
+  isReasonableName,
+  isValidEmail,
+  isValidPhoneOptional,
+  LIMITS,
+} from '@/lib/contact-validation'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -16,9 +23,12 @@ export default function Contact() {
     eventType: '',
     eventDate: '',
     message: '',
+    /** Honeypot — leave blank; bots often fill this */
+    company_website: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorHint, setErrorHint] = useState<string | null>(null)
   const heroRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLDivElement>(null)
 
@@ -66,10 +76,62 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setErrorHint(null)
 
-    // Simulate form submission
-    setTimeout(() => {
+    if (!isReasonableName(formData.name)) {
+      setErrorHint(`Please enter your full name (${LIMITS.name.min}–${LIMITS.name.max} characters).`)
+      setSubmitStatus('error')
       setIsSubmitting(false)
+      return
+    }
+    if (!isValidEmail(formData.email)) {
+      setErrorHint('Please enter a valid email address.')
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
+    if (!isValidPhoneOptional(formData.phone)) {
+      setErrorHint(
+        'Please enter a valid mobile number (e.g. 98765 43210 or +91 9876543210), or leave this field blank.'
+      )
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
+    if (!formData.eventType) {
+      setErrorHint('Please select an event type.')
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
+    if (!isReasonableMessage(formData.message)) {
+      setErrorHint(
+        `Please write a message of at least ${LIMITS.message.min} characters (up to ${LIMITS.message.max}).`
+      )
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (!res.ok) {
+        try {
+          const data = (await res.json()) as { error?: string }
+          if (data?.error) setErrorHint(data.error)
+          else setErrorHint('Something went wrong. Please try again later.')
+        } catch {
+          setErrorHint('Something went wrong. Please try again later.')
+        }
+        setSubmitStatus('error')
+        return
+      }
+
       setSubmitStatus('success')
       setFormData({
         name: '',
@@ -78,8 +140,14 @@ export default function Contact() {
         eventType: '',
         eventDate: '',
         message: '',
+        company_website: '',
       })
-    }, 1500)
+    } catch {
+      setSubmitStatus('error')
+      setErrorHint('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -119,7 +187,24 @@ export default function Contact() {
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6 md:mb-8 leading-tight">
                 Send Us a Message
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+              <form onSubmit={handleSubmit} className="relative space-y-5 md:space-y-6" noValidate>
+                {/* Honeypot: hidden from users, often filled by bots */}
+                <div
+                  className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden opacity-0"
+                  aria-hidden="true"
+                >
+                  <label htmlFor="company_website">Company website</label>
+                  <input
+                    type="text"
+                    id="company_website"
+                    name="company_website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.company_website}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
@@ -129,10 +214,13 @@ export default function Contact() {
                     id="name"
                     name="name"
                     required
+                    minLength={LIMITS.name.min}
+                    maxLength={LIMITS.name.max}
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-600 focus:border-transparent outline-none transition-all"
                     placeholder="John Doe"
+                    autoComplete="name"
                   />
                 </div>
 
@@ -145,10 +233,12 @@ export default function Contact() {
                     id="email"
                     name="email"
                     required
+                    maxLength={LIMITS.email.max}
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-600 focus:border-transparent outline-none transition-all"
                     placeholder="john@example.com"
+                    autoComplete="email"
                   />
                 </div>
 
@@ -160,11 +250,17 @@ export default function Contact() {
                     type="tel"
                     id="phone"
                     name="phone"
+                    maxLength={LIMITS.phone.max}
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-600 focus:border-transparent outline-none transition-all"
-                    placeholder="+91 7907742698"
+                    placeholder="+91 79077 42698"
+                    autoComplete="tel"
+                    inputMode="tel"
                   />
+                  <p className="mt-1.5 text-xs text-gray-500">
+                    Optional. Use a real mobile number (India: 10 digits, or +91). International: include country code (e.g. +44 …).
+                  </p>
                 </div>
 
                 <div>
@@ -204,13 +300,15 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                    Message * <span className="text-gray-500 font-normal">(min. {LIMITS.message.min} characters)</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
                     rows={6}
+                    minLength={LIMITS.message.min}
+                    maxLength={LIMITS.message.max}
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-600 focus:border-transparent outline-none transition-all resize-none"
@@ -225,8 +323,13 @@ export default function Contact() {
                 )}
 
                 {submitStatus === 'error' && (
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
-                    Something went wrong. Please try again later.
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 space-y-2">
+                    <p>Something went wrong. Please try again later.</p>
+                    {errorHint && (
+                      <p className="text-sm font-mono text-red-900/90 border-t border-red-200 pt-2">
+                        {errorHint}
+                      </p>
+                    )}
                   </div>
                 )}
 
