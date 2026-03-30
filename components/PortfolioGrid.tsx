@@ -139,7 +139,8 @@ export default function PortfolioGrid() {
         if (item) {
           gsap.from(item, {
             y: 60,
-            opacity: 0,
+            // Keep images visible immediately; avoid "blank/loading" look.
+            opacity: 1,
             scale: 0.98,
             duration: 0.6,
             ease: 'power2.out',
@@ -224,21 +225,23 @@ export default function PortfolioGrid() {
             }
 
             return (
-              <Link
+              <div
                 key={item.id}
-                href={item.href}
                 ref={(el) => {
                   itemsRef.current[index] = el
                 }}
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer w-full"
+                className="group relative overflow-hidden rounded-2xl aspect-[4/3] w-full"
+                aria-disabled="true"
               >
                 <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
+                  priority={index < 2}
+                  loading={index < 2 ? 'eager' : 'lazy'}
                   className={`object-cover transition-all duration-700 ${
                     hoveredId === item.id ? 'scale-110' : 'scale-100'
                   }`}
@@ -259,7 +262,7 @@ export default function PortfolioGrid() {
                   </div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-warm-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-30" />
-              </Link>
+              </div>
             )
           })}
         </div>
@@ -267,21 +270,23 @@ export default function PortfolioGrid() {
         {/* Regular Grid - Perfect 3 Column Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 px-4 sm:px-0 mt-6 md:mt-6">
           {regularItems.map((item, index) => (
-            <Link
+            <div
               key={item.id}
-              href={item.href}
               ref={(el) => {
                 itemsRef.current[featuredItems.length + index] = el
               }}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
-              className="group relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] cursor-pointer w-full"
+              className="group relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] w-full"
+              aria-disabled="true"
             >
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
+                priority={index < 3}
+                loading={index < 3 ? 'eager' : 'lazy'}
                 className={`object-cover ${item.imageClassName ?? ''} transition-all duration-700 ${
                   hoveredId === item.id ? 'scale-110' : 'scale-100'
                 }`}
@@ -300,7 +305,7 @@ export default function PortfolioGrid() {
                   <p className="text-white/60 text-xs sm:text-sm mb-0">{item.date}</p>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
