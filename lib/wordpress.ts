@@ -44,6 +44,14 @@ interface RawWorkFrame {
   _embedded?: {
     'wp:featuredmedia'?: Array<{ source_url: string }>
   }
+  /**
+   * Yoast SEO outputs the OpenGraph image URL here.
+   * Even when WP REST blocks featured-media embedding (rest_forbidden),
+   * Yoast can still provide an accessible image URL for the post.
+   */
+  yoast_head_json?: {
+    og_image?: Array<{ url?: string }> | string
+  }
 }
 
 function decodeHtmlEntities(text: string): string {
@@ -60,7 +68,18 @@ function decodeHtmlEntities(text: string): string {
 
 function transformWorkFrame(item: RawWorkFrame): WorkFrame {
   const media = item._embedded?.['wp:featuredmedia']?.[0]
-  const imageUrl = media?.source_url ?? ''
+  let imageUrl = media?.source_url ?? ''
+
+  // Fallback for cases where REST featured-media embedding is forbidden.
+  if (!imageUrl) {
+    const og = item.yoast_head_json?.og_image
+    if (Array.isArray(og)) {
+      imageUrl = og[0]?.url ?? ''
+    } else if (typeof og === 'string') {
+      imageUrl = og
+    }
+  }
+
   const rawTitle = item.title?.rendered ?? ''
 
   return {
