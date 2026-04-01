@@ -19,7 +19,18 @@ function getYouTubeEmbedUrl(url: string): string | null {
   return match ? `https://www.youtube.com/embed/${match[1]}` : null
 }
 
+function getYouTubeThumbnailUrl(url: string): string | null {
+  if (!url?.trim()) return null
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s?]+)/,
+  ]
+  const match = url.match(patterns[0])
+  // hqdefault guarantees a thumbnail for virtually all videos unlike maxresdefault
+  return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : null
+}
+
 interface PortfolioItem {
+// ... preserving existing lines to make replacement exact
   id: number
   title: string
   category: string
@@ -121,6 +132,11 @@ export default function PortfolioGrid() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Refresh ScrollTrigger to ensure accurate trigger positions
+      setTimeout(() => {
+        ScrollTrigger.refresh()
+      }, 500)
+
       // Section title animation - faster and smoother
       gsap.from('.section-title', {
         y: 50,
@@ -134,25 +150,23 @@ export default function PortfolioGrid() {
         },
       })
 
-      // Stagger animation for items - optimized for speed
-      itemsRef.current.forEach((item, index) => {
-        if (item) {
-          gsap.from(item, {
-            y: 60,
-            // Keep images visible immediately; avoid "blank/loading" look.
-            opacity: 1,
-            scale: 0.98,
-            duration: 0.6,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-            delay: index * 0.05,
-          })
-        }
-      })
+      // Stagger animation for items - optimized into a single ScrollTrigger instance
+      // We filter out null refs just in case
+      const validItems = itemsRef.current.filter((item) => item !== null)
+      if (validItems.length > 0) {
+        gsap.from(validItems, {
+          y: 60,
+          scale: 0.98,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        })
+      }
     }, sectionRef)
 
     return () => ctx.revert()
@@ -188,6 +202,7 @@ export default function PortfolioGrid() {
           {featuredItems.map((item, index) => {
             const embedUrl = item.videoUrl ? getYouTubeEmbedUrl(item.videoUrl) : null
             const isVideo = !!embedUrl
+            const thumbnailUrl = item.videoUrl ? getYouTubeThumbnailUrl(item.videoUrl) : null
 
             if (isVideo && embedUrl) {
               return (
@@ -198,28 +213,62 @@ export default function PortfolioGrid() {
                   }}
                   className="group relative overflow-hidden rounded-2xl aspect-[4/3] w-full bg-gray-900"
                 >
-                  <iframe
-                    src={embedUrl}
-                    title={item.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full object-cover"
+                  {/* We use an img tag for the thumbnail to avoid Next.js external domain requirements 
+                      while still providing a gorgeous fully responsive cover image. */}
+                  <img
+                    src={thumbnailUrl || item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* Bottom gradient + label overlay (pointer-events-none so clicks reach the iframe) */}
-                  <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                  <div className="absolute inset-0 z-20 px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8 flex flex-col justify-end pointer-events-none">
-                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2">
-                      <span className="px-3 py-1 bg-warm-600/90 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full">
-                        {item.category}
-                      </span>
-                      <span className="text-white/80 text-xs sm:text-sm">{item.location}</span>
+                  
+                  {/* Play Button Overlay - Premium Glassmorphism UI */}
+                  <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none bg-black/10 group-hover:bg-black/30 transition-colors duration-500">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white shadow-[0_8px_32px_rgba(0,0,0,0.3)] transform group-hover:scale-110 transition-all duration-500 ease-out">
+                      <svg className="w-6 h-6 sm:w-8 sm:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
                     </div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-1 leading-tight tracking-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-white/70 text-xs sm:text-sm mb-0">{item.date}</p>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-warm-600 z-20 pointer-events-none" />
+
+                  {/* Click target that covers the whole facade */}
+                  <div 
+                    className="absolute inset-0 z-40 cursor-pointer"
+                    onClick={(e) => {
+                      // Dynamically replace the facade with the iframe to play
+                      const target = e.currentTarget;
+                      const parent = target.parentElement;
+                      if (!parent) return;
+                      const iframe = document.createElement('iframe');
+                      iframe.src = `${embedUrl}?autoplay=1`;
+                      iframe.title = item.title;
+                      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+                      iframe.allowFullscreen = true;
+                      iframe.className = "absolute inset-0 w-full h-full object-cover z-50";
+                      parent.appendChild(iframe);
+                      target.style.display = 'none'; // hide facade clicker
+                    }}
+                    aria-label="Play Video"
+                    role="button"
+                    tabIndex={0}
+                  />
+
+                  {/* Bottom gradient + label overlay (placed behind click target) */}
+                  <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 z-20 px-6 md:px-8 pt-6 md:pt-8 pb-6 md:pb-8 flex flex-col justify-end pointer-events-none">
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2">
+                        <span className="px-3 py-1 bg-warm-600/90 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-wider rounded-full">
+                          {item.category}
+                        </span>
+                        <span className="text-white/80 text-xs sm:text-sm">{item.location}</span>
+                      </div>
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-1 leading-tight tracking-tight">
+                        {item.title}
+                      </h3>
+                      <p className="text-white/70 text-xs sm:text-sm mb-0">{item.date}</p>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-warm-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-30" />
                 </div>
               )
             }
@@ -309,11 +358,11 @@ export default function PortfolioGrid() {
           ))}
         </div>
 
-        {/* View All Button - Centered */}
-        <div className="text-center mt-12 md:mt-16 px-4">
+        {/* View All Button - Centered with Professional Standard Gap */}
+        <div className="text-center mt-20 md:mt-28 lg:mt-32 px-4 w-full flex justify-center">
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-105"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-xl shadow-gray-900/10"
           >
             <span>View Full Portfolio</span>
             <svg
