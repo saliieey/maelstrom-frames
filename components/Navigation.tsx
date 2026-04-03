@@ -134,17 +134,17 @@ export default function Navigation() {
                     {link.label}
                   </span>
                   
-                  {/* Active state - elegant underline (only when scrolled or not on home page) */}
+                  {/* Active state - elegant solid underline */}
                   {pathname === link.href && (isScrolled || !isHomePage) && (
-                    <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 h-1 w-16 rounded-full bg-gradient-to-r from-warm-500 via-warm-600 to-warm-500 transition-all duration-500" />
+                    <span className="absolute bottom-2 left-1/2 transform -translate-x-1/2 h-[2px] w-[calc(100%-3rem)] bg-warm-600 transition-all duration-500" />
                   )}
                   
-                  {/* Hover effect - animated underline that slides in */}
+                  {/* Hover effect - solid animated underline that expands from center */}
                   {pathname !== link.href && (
-                    <span className={`absolute bottom-2 left-1/2 transform -translate-x-1/2 h-0.5 w-0 rounded-full transition-all duration-500 group-hover:w-16 group-hover:h-1 ${
+                    <span className={`absolute bottom-2 left-1/2 transform -translate-x-1/2 h-[2px] w-0 transition-all duration-300 group-hover:w-[calc(100%-3rem)] ${
                       isScrolled || !isHomePage
-                        ? 'bg-gradient-to-r from-warm-500 via-warm-600 to-warm-500'
-                        : 'bg-gradient-to-r from-white/60 via-white to-white/60'
+                        ? 'bg-warm-600'
+                        : 'bg-white'
                     }`} />
                   )}
                 </Link>
