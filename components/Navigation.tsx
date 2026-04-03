@@ -64,6 +64,7 @@ export default function Navigation() {
     { href: '/services', label: 'Services' },
     { href: '/portfolio', label: 'Portfolio' },
     { href: '/events', label: 'Events' },
+    { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
   ]
 

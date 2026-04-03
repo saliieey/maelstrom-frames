@@ -1,4 +1,5 @@
 const WORKS_API = 'https://maelstromglobal.in/wp-json/wp/v2/works_frames'
+const POSTS_API = 'https://maelstromglobal.in/wp-json/wp/v2/posts'
 
 export interface WorkFrame {
   id: number
@@ -111,5 +112,124 @@ export async function getWorksFrames(): Promise<WorkFrame[]> {
     return data.map(transformWorkFrame)
   } catch {
     return []
+  }
+}
+
+// ==========================================
+// BLOG POSTS INTEGRATION
+// ==========================================
+
+export interface BlogPost {
+  id: number
+  slug: string
+  title: string
+  content: string
+  excerpt: string
+  date: string
+  image: string
+  author: string
+  category: string
+}
+
+interface RawWPPost {
+  id: number
+  slug: string
+  date: string
+  title: { rendered: string }
+  content: { rendered: string }
+  excerpt: { rendered: string }
+  acf?: {
+    custom_author?: string
+  }
+  meta?: {
+    custom_author?: string
+  }
+  _embedded?: {
+    author?: Array<{ name: string }>
+    'wp:term'?: Array<Array<{ name: string }>>
+    'wp:featuredmedia'?: Array<{ source_url: string }>
+  }
+  yoast_head_json?: {
+    og_image?: Array<{ url?: string }> | string
+  }
+}
+
+function transformBlogPost(item: RawWPPost): BlogPost {
+  const media = item._embedded?.['wp:featuredmedia']?.[0]
+  let imageUrl = media?.source_url ?? ''
+
+  // Fallback for cases where REST featured-media embedding is forbidden.
+  if (!imageUrl) {
+    const og = item.yoast_head_json?.og_image
+    if (Array.isArray(og)) {
+      imageUrl = og[0]?.url ?? ''
+    } else if (typeof og === 'string') {
+      imageUrl = og
+    }
+  }
+
+  // Attempt to extract the first category
+  const categories = item._embedded?.['wp:term']?.[0] || []
+  const category = categories.length > 0 ? categories[0].name : 'Stories'
+
+  // Extract author name: Check for custom_author first, then fallback to native WP author
+  const nativeAuthor = item._embedded?.author?.[0]?.name ?? 'Maelstrom Frames'
+  const customAuthor = item.acf?.custom_author || item.meta?.custom_author
+  const author = customAuthor ? customAuthor.trim() : nativeAuthor
+
+  return {
+    id: item.id,
+    slug: item.slug,
+    title: decodeHtmlEntities(item.title?.rendered ?? ''),
+    content: item.content?.rendered ?? '',
+    excerpt: item.excerpt?.rendered ?? '',
+    date: new Date(item.date).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    image: imageUrl || 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Graceful fallback
+    author: author,
+    category: decodeHtmlEntities(category),
+  }
+}
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const res = await fetch(
+      `${POSTS_API}?_embed&per_page=20&orderby=date&order=desc`,
+      {
+        next: { revalidate: 60 }, // Revalidate every minute instead of no-store for faster blog loading
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+
+    if (!res.ok) return []
+
+    const data: RawWPPost[] = await res.json()
+    return data.map(transformBlogPost)
+  } catch {
+    return []
+  }
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    const res = await fetch(
+      `${POSTS_API}?_embed&slug=${slug}`,
+      {
+        next: { revalidate: 60 },
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+
+    if (!res.ok) return null
+    const data: RawWPPost[] = await res.json()
+    
+    if (data.length === 0) return null
+    
+    return transformBlogPost(data[0])
+  } catch {
+    return null
   }
 }

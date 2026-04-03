@@ -55,6 +55,11 @@ export default function Footer() {
                   Event Coverage
                 </Link>
               </li>
+              <li>
+                <Link href="/blog" className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
