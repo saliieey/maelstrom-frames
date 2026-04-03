@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Urbanist, Playfair_Display } from 'next/font/google'
+import { Urbanist, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -11,9 +11,10 @@ const urbanist = Urbanist({
   display: 'swap',
 })
 
-const playfair = Playfair_Display({ 
+const cormorant = Cormorant_Garamond({ 
   subsets: ['latin'],
-  variable: '--font-playfair',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-cormorant',
   display: 'swap',
 })
 
@@ -36,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${urbanist.variable} ${playfair.variable} font-sans antialiased`}>
+      <body className={`${urbanist.variable} ${cormorant.variable} font-sans antialiased`}>
         <SmoothScroll>
           <Navigation />
           <main className="min-h-screen">

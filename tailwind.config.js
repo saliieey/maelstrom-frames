@@ -28,7 +28,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-urbanist)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'serif'],
+        serif: ['var(--font-cormorant)', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
