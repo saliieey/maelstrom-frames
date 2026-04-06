@@ -215,6 +215,7 @@ export default function PortfolioGrid() {
                 >
                   {/* We use an img tag for the thumbnail to avoid Next.js external domain requirements 
                       while still providing a gorgeous fully responsive cover image. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={thumbnailUrl || item.image}
                     alt={item.title}
