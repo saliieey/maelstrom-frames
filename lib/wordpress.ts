@@ -131,7 +131,7 @@ export async function getWorksFrames(): Promise<WorkFrame[]> {
     const res = await fetch(
       `${WORKS_API}?_embed&per_page=100&orderby=date&order=desc`,
       {
-        cache: 'no-store',
+        next: { revalidate: 60 },
         headers: { 'Content-Type': 'application/json' },
       }
     )
