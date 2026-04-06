@@ -5,12 +5,15 @@ export interface WorkFrame {
   id: number
   title: string
   image: string
+  images: string[]
   place: string
   date: string
   main_category: 'wedding' | 'event' | 'save-the-date'
   wedding_type: 'hindu' | 'muslim' | 'christian' | null
-  media_type: 'photo' | 'video'
-  video_url: string
+  hasPhoto: boolean
+  hasVideo: boolean
+  videoUrl: string
+  imagePosition: 'top' | 'center' | 'bottom'
 }
 
 function normalizeMainCategory(value: string | undefined | null): WorkFrame['main_category'] {
@@ -33,14 +36,17 @@ function normalizeMainCategory(value: string | undefined | null): WorkFrame['mai
 interface RawWorkFrame {
   id: number
   title: { rendered: string }
+  content?: { rendered: string }
   featured_media: number
   acf?: {
     place?: string
     date?: string
     main_category?: string
     wedding_type?: string | null
-    media_type?: string
     video_url?: string
+    gallery?: Array<string | { url: string }>
+    cover_image_alignment?: 'top' | 'center' | 'bottom'
+    image_position?: 'top' | 'center' | 'bottom'
   }
   _embedded?: {
     'wp:featuredmedia'?: Array<{ source_url: string }>
@@ -83,16 +89,40 @@ function transformWorkFrame(item: RawWorkFrame): WorkFrame {
 
   const rawTitle = item.title?.rendered ?? ''
 
+  const images = new Set<string>()
+  if (imageUrl) images.add(imageUrl)
+    
+  if (Array.isArray(item.acf?.gallery)) {
+    item.acf.gallery.forEach(g => {
+      const gUrl = typeof g === 'string' ? g : g?.url
+      if (gUrl) images.add(gUrl)
+    })
+  }
+
+  // Fallback for non-ACF Pro users: extract images from the native WordPress editor content
+  const contentHtml = item.content?.rendered || ''
+  const imgRegex = /<img[^>]+src="([^">]+)"/g
+  let match
+  while ((match = imgRegex.exec(contentHtml)) !== null) {
+    images.add(match[1])
+  }
+
+  const imagesArray = Array.from(images)
+  const videoUrl = item.acf?.video_url ?? ''
+
   return {
     id: item.id,
     title: decodeHtmlEntities(rawTitle),
-    image: imageUrl,
+    image: imageUrl || (imagesArray.length > 0 ? imagesArray[0] : ''),
+    images: imagesArray,
     place: item.acf?.place ?? '',
     date: item.acf?.date ?? '',
     main_category: normalizeMainCategory(item.acf?.main_category),
     wedding_type: (item.acf?.wedding_type as 'hindu' | 'muslim' | 'christian') || null,
-    media_type: (item.acf?.media_type === 'video' ? 'video' : 'photo') as 'photo' | 'video',
-    video_url: item.acf?.video_url ?? '',
+    hasPhoto: imagesArray.length > 0,
+    hasVideo: !!videoUrl,
+    videoUrl,
+    imagePosition: item.acf?.cover_image_alignment || item.acf?.image_position || 'center',
   }
 }
 
