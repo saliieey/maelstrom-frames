@@ -48,6 +48,8 @@ export default function Services() {
   const services = [
     {
       title: 'Wedding Photography & Videography',
+      image: '/images/services/wedding.jpg',
+      imagePosition: 'object-[50%_15%]',
       description: 'Capture your special day with our comprehensive wedding photography and videography services. We document every precious moment from the ceremony to the reception, creating a beautiful visual narrative of your wedding day. Our team works discreetly to capture candid moments while also orchestrating stunning formal portraits. We offer multiple packages to suit different needs, including engagement sessions, full-day coverage, and destination weddings.',
       features: [
         'Full-day coverage',
@@ -60,6 +62,8 @@ export default function Services() {
     },
     {
       title: 'Event Coverage',
+      image: '/images/services/events.jpg',
+      imagePosition: 'object-center',
       description: 'Professional event documentation for corporate gatherings, festivals, conferences, and celebrations. We understand that every event is unique and requires a tailored approach. Our team arrives early to scout locations, set up equipment, and coordinate with event organizers. We capture both the energy of the event and the important moments, ensuring comprehensive coverage that tells the complete story of your occasion.',
       features: [
         'Multi-camera setup',
@@ -72,6 +76,8 @@ export default function Services() {
     },
     {
       title: 'Portrait Photography',
+      image: '/images/services/portraits.jpg',
+      imagePosition: 'object-[50%_30%]',
       description: 'Elegant and timeless portrait sessions for individuals, families, couples, and professionals. Whether you need headshots for your business, family portraits for your home, or creative personal portraits, we create images that reflect your personality and style. Our portrait sessions are relaxed and enjoyable, allowing your true self to shine through. We work with natural and studio lighting to achieve the perfect look for every client.',
       features: [
         'Studio sessions',
@@ -84,6 +90,8 @@ export default function Services() {
     },
     {
       title: 'Commercial Photography',
+      image: '/images/services/commercial.jpg',
+      imagePosition: 'object-center',
       description: 'High-quality commercial photography for businesses, products, and marketing campaigns. We help brands tell their story through compelling visual content that resonates with their target audience. From product photography to lifestyle shoots, we create images that elevate your brand and drive engagement. Our commercial work includes e-commerce photography, brand campaigns, architectural photography, and food photography.',
       features: [
         'Product photography',
@@ -96,6 +104,9 @@ export default function Services() {
     },
   ]
 
+  const fallbackImage = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+  const fallbackHero = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+
   return (
     <div className="pt-20 md:pt-24">
       {/* Hero Section */}
@@ -103,8 +114,9 @@ export default function Services() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
           <Image
-            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            src={`/images/services/hero.jpg`}
             alt="Services"
+            onError={(e: any) => { e.currentTarget.src = fallbackHero; e.currentTarget.srcset = '' }}
             fill
             className="object-cover"
             priority
@@ -172,10 +184,11 @@ export default function Services() {
                 <div className="flex-1 w-full px-4 sm:px-0">
                   <div className="relative aspect-[4/3] rounded-lg md:rounded-2xl overflow-hidden">
                     <Image
-                      src={`https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&sig=${index}`}
+                      src={service.image}
                       alt={service.title}
+                      onError={(e: any) => { e.currentTarget.src = `${fallbackImage}&sig=${index}`; e.currentTarget.srcset = '' }}
                       fill
-                      className="object-cover"
+                      className={`object-cover ${service.imagePosition || 'object-center'}`}
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
