@@ -203,7 +203,7 @@ export default function PortfolioWorks({ works }: PortfolioWorksProps) {
                 </span>
                 <div className="w-12 h-0.5 bg-warm-200 mx-auto mt-2 rounded-full" />
               </div>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4 px-4">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 px-4 py-2 pb-4">
                 <button
                   onClick={() => setActiveSubFilter(null)}
                   className={`px-5 md:px-7 py-2.5 md:py-3 rounded-full font-medium transition-all duration-300 text-xs md:text-sm touch-manipulation border ${

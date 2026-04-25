@@ -114,6 +114,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={true}
                   className={`group relative px-6 py-3.5 text-sm font-semibold tracking-wide transition-all duration-500 ease-out ${
                     pathname === link.href
                       ? isScrolled || !isHomePage
@@ -160,6 +161,7 @@ export default function Navigation() {
               {/* CTA Button - Ultra Premium with Multiple Effects */}
               <Link
                 href="/contact"
+                prefetch={true}
                 className={`group relative px-8 py-3.5 font-bold text-sm tracking-wider rounded-full overflow-hidden transition-all duration-500 ${
                   isScrolled || !isHomePage
                     ? 'bg-gradient-to-r from-warm-600 via-warm-600 to-warm-700 text-white shadow-xl shadow-warm-600/40 hover:shadow-2xl hover:shadow-warm-600/50'
@@ -241,7 +243,7 @@ export default function Navigation() {
       >
         {/* Professional Backdrop with Blur */}
         <div 
-          className={`absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-500 ease-out ${
+          className={`absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-200 ease-out ${
             isOpen ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={() => setIsOpen(false)}
@@ -249,7 +251,7 @@ export default function Navigation() {
 
         {/* Premium Sliding Panel */}
         <div
-          className={`absolute left-0 top-0 h-full w-[85%] max-w-[360px] bg-white shadow-2xl transition-transform duration-500 ease-out ${
+          className={`absolute left-0 top-0 h-full w-[85%] max-w-[360px] bg-white shadow-2xl transition-transform duration-300 ease-out ${
             isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
@@ -300,6 +302,7 @@ export default function Navigation() {
                   >
                     <Link
                       href={link.href}
+                      prefetch={true}
                       onClick={() => setIsOpen(false)}
                       className={`
                         group relative flex items-center justify-between rounded-xl px-4 py-3.5

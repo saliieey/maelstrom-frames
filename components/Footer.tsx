@@ -36,27 +36,27 @@ export default function Footer() {
             <h4 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
+                <Link href="/about" prefetch={true} className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
+                <Link href="/services" prefetch={true} className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
+                <Link href="/portfolio" prefetch={true} className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
+                <Link href="/events" prefetch={true} className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
                   Event Coverage
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
+                <Link href="/blog" prefetch={true} className="text-gray-400 hover:text-warm-400 transition-colors text-sm md:text-base">
                   Blog
                 </Link>
               </li>
@@ -78,7 +78,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="pt-2">
-                <Link href="/contact" className="text-warm-400 hover:text-warm-300 transition-colors font-medium text-sm md:text-base inline-flex items-center gap-2">
+                <Link href="/contact" prefetch={true} className="text-warm-400 hover:text-warm-300 transition-colors font-medium text-sm md:text-base inline-flex items-center gap-2">
                   Get in Touch
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
