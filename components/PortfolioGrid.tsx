@@ -193,7 +193,7 @@ export default function PortfolioGrid() {
             Recent Projects
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-           A Glimpse of Stories We've Told
+           A Glimpse of Stories We&#39;ve Told
           </p>
         </div>
 

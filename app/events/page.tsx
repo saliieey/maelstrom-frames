@@ -124,7 +124,7 @@ export default function Events() {
               Comprehensive Event Coverage 
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-              Things can get messy, and there is no retake option at any time. That's why we come prepared to the shoot, knowing the layout of the place and how we will adapt to your event.
+              Things can get messy, and there is no retake option at any time. That&#39;s why we come prepared to the shoot, knowing the layout of the place and how we will adapt to your event.
             </p>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
               Our methodology includes: Scouting the location before the shoot; Understanding the flow of the event; Positioning multiple cameras to catch the highlights; Anticipating key events; Capturing the feeling of the event; Being discreet and blending into the background; Providing you with outstanding results in days instead of weeks.

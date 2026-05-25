@@ -93,7 +93,7 @@ export default function Testimonials() {
             What Our Clients Say
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-           From Perinthalmanna to Kerala, here's what our clients think
+           From Perinthalmanna to Kerala, here&#39;s what our clients think
           </p>
         </div>
 

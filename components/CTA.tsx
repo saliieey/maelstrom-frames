@@ -69,7 +69,7 @@ export default function CTA() {
             Ready to Work With Us?
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Let's create something beautiful. Whether it's your wedding, a corporate event, or a large-scale production, we're here to bring your vision to life, fast and precise.
+            Let&#39;s create something beautiful. Whether it&#39;s your wedding, a corporate event, or a large-scale production, we&#39;re here to bring your vision to life, fast and precise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 md:mb-16">
             <Link

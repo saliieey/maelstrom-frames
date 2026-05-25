@@ -75,7 +75,7 @@ export default function PortfolioPageClient({ works }: PortfolioPageClientProps)
             Ready to See More?
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Browse our full portfolio, or better yet, let's talk about your project. Every event is different, and we'd love to discuss how we can capture yours.
+            Browse our full portfolio, or better yet, let&#39;s talk about your project. Every event is different, and we&#39;d love to discuss how we can capture yours.
           </p>
           <Link href="/contact" className="btn btn-primary text-lg px-8 py-4">
             Get in Touch
