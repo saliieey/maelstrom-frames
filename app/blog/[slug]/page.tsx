@@ -13,6 +13,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${post.title} - Maelstrom Frames Blog`,
     description: post.excerpt.replace(/<[^>]+>/g, '').slice(0, 150) + '...',
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
   }
 }
 

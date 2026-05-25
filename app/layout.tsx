@@ -19,9 +19,13 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://maelstrom-frames.vercel.app'),
   title: 'Maelstrom Frames - Professional Photography & Videography',
   description: 'Capturing life\'s most precious moments with artistic excellence. Professional wedding photography, event coverage, and cinematic videography.',
   keywords: 'photography, videography, wedding photography, event coverage, professional photographer',
+  alternates: {
+    canonical: '/',
+  },
   viewport: {
     width: 'device-width',
     initialScale: 1,

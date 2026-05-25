@@ -9,6 +9,9 @@ import CTA from '@/components/CTA'
 export const metadata = {
   title: 'Best Wedding Photography in Perinthalmanna, Kerala',
   description: 'Best wedding photography & videography in Perinthalmanna, Kerala. Capture your special moments with professional wedding videography services. Book us now!',
+  alternates: {
+    canonical: '/',
+  },
 }
 
 export default function Home() {

@@ -3,6 +3,9 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Contact Us - Photography Services Perinthalmanna, Kerala',
   description: 'Get in touch with our photography team in Perinthalmanna, Kerala. Book your wedding, event or portrait photography services. Fast response & consultation.',
+  alternates: {
+    canonical: '/contact',
+  },
 }
 
 export default function ContactLayout({

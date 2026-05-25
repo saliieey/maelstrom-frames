@@ -7,6 +7,9 @@ export const dynamic = 'force-dynamic'
 export const metadata = {
   title: 'Photography Blog - Tips & Guides Perinthalmanna',
   description: 'Read our photography blog for wedding, event & portrait photography tips, guides & insights. Learn from our professional photography team in Perinthalmanna.',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 export default async function BlogPage() {
