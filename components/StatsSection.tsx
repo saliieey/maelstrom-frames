@@ -113,8 +113,8 @@ export default function StatsSection() {
   }, [])
 
   const stats = [
-    { number: '500+', label: 'Events Captured' },
-    { number: '10+', label: 'Years Experience' },
+    { number: '2+', label: 'Events Captured' },
+    { number: '2+', label: 'Years Experience' },
     { number: '100%', label: 'Client Satisfaction' },
   ]
 
