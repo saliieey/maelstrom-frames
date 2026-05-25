@@ -4,8 +4,8 @@ import PortfolioPageClient from '@/components/PortfolioPageClient'
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: 'Our Portfolio - Maelstrom Frames',
-  description: 'Explore our collection of stunning wedding photography, event coverage, and videography work.',
+  title: 'Wedding Photography Portfolio Perinthalmanna, Kerala',
+  description: 'Explore our wedding & event photography portfolio in Perinthalmanna, Kerala. View our best work showcasing portrait, commercial & large event coverage.',
 }
 
 export default async function Portfolio() {

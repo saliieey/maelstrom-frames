@@ -141,22 +141,22 @@ export default function HeroSection() {
           </div>
           
           {/* Main Title - Matching website font style */}
-          <h1
+          <h2
             ref={titleRef}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 md:mb-10 leading-tight tracking-tight px-4 opacity-0 drop-shadow-2xl -mt-6 md:-mt-10"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)' }}
           >
             Capturing Life&apos;s<br />Precious Moments
-          </h1>
+          </h2>
           
-          {/* Subtitle - Enhanced with better readability */}
-          <p
+          {/* Subtitle / H1 - Enhanced with better readability */}
+          <h1
             ref={subtitleRef}
             className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-10 max-w-3xl mx-auto font-normal leading-relaxed px-4 opacity-0 drop-shadow-lg"
             style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.4)' }}
           >
-            Where artistry meets emotion, creating timeless visual narratives that preserve your most cherished memories
-          </p>
+            Best Wedding Photography in Perinthalmanna, Kerala - Professional Wedding Videography Services
+          </h1>
           
           {/* CTA Buttons - Enhanced with better prominence and positioning */}
           <div ref={buttonRef} className="flex flex-col sm:flex-row gap-5 sm:gap-6 justify-center items-center px-4 mb-24 md:mb-32">

@@ -36,23 +36,23 @@ const SparkleIcon = ({ className }: { className?: string }) => (
 
 const features = [
   {
-    title: 'Artistic Excellence',
-    description: 'Every frame is crafted with artistic vision, ensuring your memories are not just documented, but transformed into works of art.',
+    title: 'Speed Without Compromise',
+    description: 'We provide you with excellent results quickly. The quick nature of our services ensures that the photos or footage from your weddings or any other events are delivered quickly without sacrificing on quality.',
     Icon: ArtisticIcon,
   },
   {
-    title: 'Professional Team',
-    description: 'Our experienced photographers and videographers bring years of expertise to every project, ensuring flawless execution.',
+    title: 'Large Event Expertise',
+    description: 'We have done it all, from handling intimate weddings to major concerts and even stage performances. We are experienced in covering large-scale events.',
     Icon: TeamIcon,
   },
   {
-    title: 'Cutting-Edge Technology',
-    description: 'We use the latest professional equipment and editing software to deliver stunning, high-quality results that exceed expectations.',
+    title: 'Local, Reliable Team',
+    description: 'Our team is based out of Perinthalmanna, Kerala. We know our territory well, were dependable, and we care for our community.',
     Icon: CameraIcon,
   },
   {
-    title: 'Personalized Service',
-    description: 'Every client is unique, and we tailor our approach to match your style, preferences, and vision for your special occasion.',
+    title: 'Personalized Approach',
+    description: 'Every event is unique. We tailor our service approach according to your preferences and requirements.',
     Icon: SparkleIcon,
   },
 ]
@@ -120,7 +120,7 @@ export default function WhyChooseUs() {
             Excellence in Every Frame
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            We don&apos;t just capture moments—we create timeless visual narratives
+            What Sets Us Apart
           </p>
         </div>
 

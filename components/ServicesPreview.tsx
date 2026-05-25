@@ -36,22 +36,22 @@ const PortraitIcon = ({ className }: { className?: string }) => (
 const services = [
   {
     title: 'Wedding Photography',
-    description: 'Capturing your special day with artistic vision and attention to detail. Every moment, every emotion, beautifully preserved.',
+    description: 'Your special day deserves to be captured with artistry. We document every emotion, every detail—delivered fast, without losing the artistry.',
     Icon: WeddingIcon,
   },
   {
     title: 'Event Coverage',
-    description: 'Professional documentation of corporate events, festivals, and celebrations. Comprehensive coverage that tells your story.',
+    description: 'From covering large concerts, stadium events and large celebrations. Cover large scale, complex productions precisely and with multiple camera angles.',
     Icon: EventIcon,
   },
   {
     title: 'Videography',
-    description: 'Cinematic storytelling that brings your memories to life. Motion, emotion, and artistry combined.',
+    description: 'Live events, concerts, product launches. We capture your moment in cinematic detail and deliver it quickly and with energy.',
     Icon: VideoIcon,
   },
   {
     title: 'Portrait Sessions',
-    description: 'Elegant and timeless portraits for individuals, families, and couples. Professional studio and location photography.',
+    description: 'Professional portraits that feel natural and genuine. Studio or on-location, we create the best images that stands out.',
     Icon: PortraitIcon,
   },
 ]
@@ -116,7 +116,7 @@ export default function ServicesPreview() {
             Our Services
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Comprehensive photography and videography solutions crafted with precision and passion
+           Fast-Delivery Photography & Videography Solutions
           </p>
         </div>
 

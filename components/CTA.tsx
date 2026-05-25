@@ -66,24 +66,24 @@ export default function CTA() {
       <div ref={contentRef} className="container mx-auto text-center relative z-10">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 md:mb-8 leading-tight">
-            Ready to Capture Your Story?
+            Ready to Work With Us?
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Let&apos;s discuss how we can bring your vision to life with our professional photography and videography services. Every moment deserves to be remembered.
+            Let's create something beautiful. Whether it's your wedding, a corporate event, or a large-scale production, we're here to bring your vision to life, fast and precise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 md:mb-16">
             <Link
               href="/contact"
               className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-white text-warm-800 font-bold text-base sm:text-lg rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl w-full sm:w-auto"
             >
-              <span className="relative z-10">Get Started Today</span>
+              <span className="relative z-10">Book Your Session</span>
               <div className="absolute inset-0 bg-warm-50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </Link>
             <Link
               href="/portfolio"
               className="group px-8 sm:px-10 py-4 sm:py-5 bg-white/10 backdrop-blur-md text-white font-bold text-base sm:text-lg rounded-full border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
-              View Our Work
+              See Our Portfolio
             </Link>
           </div>
 

@@ -50,56 +50,56 @@ export default function Services() {
       title: 'Wedding Photography & Videography',
       image: '/images/services/wedding.jpg',
       imagePosition: 'object-[50%_15%]',
-      description: 'Capture your special day with our comprehensive wedding photography and videography services. We document every precious moment from the ceremony to the reception, creating a beautiful visual narrative of your wedding day. Our team works discreetly to capture candid moments while also orchestrating stunning formal portraits. We offer multiple packages to suit different needs, including engagement sessions, full-day coverage, and destination weddings.',
+      description: 'There is only one time for your wedding, and we all ensure that everything, from the initial nervousness to the last dance, is captured in all its beauty.Our method is combined, we all be subtle enough to catch the true candid moments of your wedding, but we are also experienced enough to stage the necessary poses for your wedding album. Its a choice between one or another for some other photography companies; we cover both aspects because your wedding deserves both.',
       features: [
-        'Full-day coverage',
-        'Engagement sessions',
-        'Drone photography',
-        'Same-day highlights',
-        'Online gallery',
-        'Professional editing',
+        'Coverage can include either full or half days.',
+        'Pre-wedding engagement photoshoots',
+        'Drones to provide impressive shots from high angles',
+        'Same-day highlight clips (you dont need to wait to enjoy your wedding)',
+        'Professional post-production of the material',
+        'Fast delivery without sacrificing any quality',
       ],
     },
     {
       title: 'Event Coverage',
       image: '/images/services/events.jpg',
       imagePosition: 'object-center',
-      description: 'Professional event documentation for corporate gatherings, festivals, conferences, and celebrations. We understand that every event is unique and requires a tailored approach. Our team arrives early to scout locations, set up equipment, and coordinate with event organizers. We capture both the energy of the event and the important moments, ensuring comprehensive coverage that tells the complete story of your occasion.',
+      description: 'This is what we do best. Whether festival productions, corporate conventions, product launches, or concert stages—no matter how complex the event, we do it seamlessly and quickly.Large events are fast-paced and require organization. With years of experience shooting concerts, festivals, and corporate functions throughout the state of Kerala, we know how to get into the groove of the event without being a hindrance.',
       features: [
-        'Multi-camera setup',
-        'Live streaming options',
-        'Real-time social media updates',
-        'Post-event highlights',
-        'Professional documentation',
-        'Custom packages',
+        'Multi-cam coverage of the entire event',
+        'Live streaming/real-time monitoring',
+        'Professional sound synchronization',
+        'Multi-videographers covering multiple angles',
+        'Fast creation of highlight videos',
+        'Familiarity with outdoor and indoor locations',
       ],
     },
     {
       title: 'Portrait Photography',
       image: '/images/services/portraits.jpg',
       imagePosition: 'object-[50%_30%]',
-      description: 'Elegant and timeless portrait sessions for individuals, families, couples, and professionals. Whether you need headshots for your business, family portraits for your home, or creative personal portraits, we create images that reflect your personality and style. Our portrait sessions are relaxed and enjoyable, allowing your true self to shine through. We work with natural and studio lighting to achieve the perfect look for every client.',
+      description: 'Some people require more than just a photograph; they require an image that *resonates* with them.We have professional portraiture services for business headshots, family portraits, couples, and personal branding. We make sure that you forget about the camera and just be yourself in our sessions, because the results come from that place of authenticity.',
       features: [
-        'Studio sessions',
-        'Outdoor locations',
-        'Professional headshots',
-        'Family portraits',
-        'Maternity photography',
-        'Retouching services',
+        'Studio photography services',
+        'Location photography services',
+        'Professional business headshots',
+        'Family portraits for your home',
+        'Couple and engagement portraits',
+        'Professional editing services',
       ],
     },
     {
       title: 'Commercial Photography',
       image: '/images/services/commercial.jpg',
       imagePosition: 'object-center',
-      description: 'High-quality commercial photography for businesses, products, and marketing campaigns. We help brands tell their story through compelling visual content that resonates with their target audience. From product photography to lifestyle shoots, we create images that elevate your brand and drive engagement. Our commercial work includes e-commerce photography, brand campaigns, architectural photography, and food photography.',
+      description: 'For brands, pictures should sell. Our services include commercial photography that will tell the story of your brand.Our experience encompasses e-commerce companies, restaurants, real estate agents, fashion brands, and other service-oriented businesses. We specialize in commercial photography that ranges from product photography to lifestyle shots that help create an engaging brand story.',
       features: [
-        'Product photography',
-        'Lifestyle shoots',
-        'Architectural photography',
-        'Food photography',
-        'Brand campaigns',
-        'E-commerce imagery',
+        'Product photography for e-commerce businesses',
+        'Lifestyle photography and campaigns',
+        'Photography of food & beverages',
+        'Real estate and architectural photography',
+        'Commercial headshots and group shots',
+        'Brand storytelling through pictures',
       ],
     },
   ]
@@ -129,8 +129,9 @@ export default function Services() {
               Our Services
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
-            Our Services
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
+            Professional Photography Services in Perinthalmanna
+            <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium">Wedding, Event, Portrait & Commercial Photography</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
             Comprehensive photography and videography solutions
@@ -203,10 +204,10 @@ export default function Services() {
       <section className="section-padding bg-warm-50">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-4 md:mb-6">
-            Ready to Get Started?
+            Which Services Will Work For You?
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Contact us today to discuss your project and learn more about our services
+            Are you not sure where to begin? We can chat about it. Projects differ from one another, and we will be glad to create custom packages tailored to meet your requirements.
           </p>
           <Link href="/contact" className="btn btn-primary text-lg px-8 py-4">
             Contact Us

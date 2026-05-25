@@ -5,8 +5,8 @@ import { getBlogPosts } from '@/lib/wordpress'
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: 'Blog - Maelstrom Frames | Wedding Photography Insights',
-  description: 'Insights, tips, and stories from the Maelstrom Frames team. Your guide to perfect wedding photography and videography.',
+  title: 'Photography Blog - Tips & Guides Perinthalmanna',
+  description: 'Read our photography blog for wedding, event & portrait photography tips, guides & insights. Learn from our professional photography team in Perinthalmanna.',
 }
 
 export default async function BlogPage() {
@@ -25,8 +25,9 @@ export default async function BlogPage() {
           <span className="inline-block py-1 px-3 rounded-full bg-warm-100 text-warm-800 text-xs font-bold tracking-widest uppercase mb-6 animate-fade-in">
             Our Journal
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl mb-6 text-gray-900 animate-slide-up">
-            Stories &amp; Inspiration
+          <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-gray-900 animate-slide-up font-serif font-bold">
+            Photography Blog
+            <span className="block mt-3 text-lg md:text-xl lg:text-2xl text-gray-600 font-medium font-sans">Wedding, Event & Portrait Photography Tips in Perinthalmanna, Kerala</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Tips, guides, and beautiful stories to inspire your wedding planning journey and help you capture perfect memories.

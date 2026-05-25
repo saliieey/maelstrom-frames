@@ -9,9 +9,10 @@ export default function Footer() {
           <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 md:mb-6">Maelstrom Frames</h3>
             <p className="text-gray-400 mb-6 md:mb-8 max-w-md leading-relaxed text-sm md:text-base">
-              Capturing life&apos;s most precious moments with artistic excellence. 
-              Professional photography and videography services for weddings, events, and special occasions.
+              Professional wedding photography company in Perinthalmanna, Kerala. Specializing in fast delivery of wedding photography, large event coverage, and professional videography services.
+              Perinthalmanna, Kerala | Est. 2015
             </p>
+           
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-warm-400 transition-colors" aria-label="Facebook">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

@@ -85,8 +85,9 @@ export default function About() {
               Our Story
             </span>
           </div>
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight">
-            About Maelstrom Frames
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+            Wedding Photography Company in Perinthalmanna
+            <span className="text-2xl sm:text-3xl lg:text-4xl block mt-4 text-white/90 font-medium drop-shadow-lg">Fast Delivery & Large Event Coverage Experts</span>
           </h1>
           <p className="text-xl sm:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
             Crafting visual stories that last a lifetime
@@ -103,26 +104,23 @@ export default function About() {
                 Our Journey
               </span>
               <h2 className="text-5xl sm:text-6xl font-serif font-bold text-gray-900 mb-6">
-                Where Art Meets Emotion
+               The Fusion of Speed and Artistry
               </h2>
             </div>
 
             <div className="prose prose-lg max-w-none space-y-8">
               <div className="text-lg text-gray-700 leading-relaxed">
                 <p className="mb-6">
-                  Maelstrom Frames was born from a simple yet profound passion: the desire to capture life&apos;s most meaningful moments with artistic excellence. Founded by a team of dedicated photographers and videographers, we have spent years perfecting our craft, learning that every frame tells a story, and every story deserves to be told beautifully.
+                  Maelstrom Frames began from no vision of awards and recognition; rather, it was borne from the realization of the need for people who can provide high-quality visuals quickly.
                 </p>
                 <p className="mb-6">
-                  What sets us apart is our unwavering commitment to understanding not just what you want to capture, but why it matters to you. We believe that photography and videography are not merely about documenting events—they are about preserving emotions, relationships, and the essence of moments that define who we are. This philosophy drives every project we undertake, from intimate wedding ceremonies to grand corporate events.
+                  As a company located in Perinthalmanna, Kerala, we have more than two years of experience in providing high-quality visuals under pressure. Having worked on everything from small-scale wedding projects to large-scale concerts involving thousands of participants, we know how to manage our time effectively while still maintaining an artistic touch to all our visual work.
                 </p>
                 <p className="mb-6">
-                  Our team brings together diverse talents and perspectives, united by a shared vision of creating visual narratives that resonate deeply. We combine technical expertise with creative intuition, ensuring that each photograph and video we produce is both technically flawless and emotionally compelling. Whether it&apos;s the subtle exchange of glances during a wedding ceremony or the energy of a corporate product launch, we capture it all with precision and artistry.
+                 Our uniqueness comes not from the speed at which we provide services but from the fact that we can do the kind of work at that pace. When our competitors are still working on their videos, we've already delivered the wedding photography package you ordered. When they're trying to cope with the logistics of a big event, we've already captured the whole concert using multiple angles, mixing live recordings and high-quality video.
                 </p>
                 <p className="mb-6">
-                  Over the years, we have had the privilege of working with countless clients, each with unique stories to tell. These experiences have taught us that the best work happens when there&apos;s a genuine connection between the photographer and the subject. That&apos;s why we take the time to understand your vision, your style, and your expectations before we even pick up a camera.
-                </p>
-                <p>
-                  As we continue to grow and evolve, our core values remain unchanged: excellence in execution, authenticity in storytelling, and a genuine passion for what we do. We are not just service providers—we are visual storytellers, memory keepers, and artists dedicated to making your moments immortal.
+                  We are a professional wedding videography company in Perinthalmanna that knows one thing: your time is now, not tomorrow.
                 </p>
               </div>
             </div>
@@ -148,8 +146,8 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                title: 'Excellence',
-                description: 'We strive for perfection in every frame, ensuring that our work meets the highest standards of quality and artistry. Every detail matters, and we never compromise on the quality of our deliverables.',
+                title: 'Fast but Not at the Cost of Quality',
+                description: 'We work fast because we have optimized the process and not because we have sacrificed quality. Wedding photographs in days and not in weeks. Event videos delivered before the memory fades away.',
                 Icon: () => (
                   <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
@@ -157,8 +155,8 @@ export default function About() {
                 ),
               },
               {
-                title: 'Authenticity',
-                description: 'We believe in capturing genuine moments and emotions, creating authentic visual stories that reflect the true essence of your event. Real moments, real emotions, real stories.',
+                title: 'True Moments Over Flawless Shots',
+                description: 'We take photographs of those authentic moments when there was a spontaneous laugh, a tear, a feeling. The right lighting is always appreciated. True emotions are what matters.',
                 Icon: () => (
                   <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -166,8 +164,8 @@ export default function About() {
                 ),
               },
               {
-                title: 'Passion',
-                description: 'Our love for photography and videography drives us to continuously innovate and push creative boundaries. This passion is evident in every project we undertake.',
+                title: 'Close by Your Side in Perinthalmanna',
+                description: 'We won’t arrive in your place after a long flight. We operate in the town of Perinthalmanna. We know the venue and are aware of the weather conditions.',
                 Icon: () => (
                   <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />

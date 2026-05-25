@@ -169,8 +169,9 @@ export default function Contact() {
               Get in Touch
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
-            Get in Touch
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
+            Contact Us
+            <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium drop-shadow-lg">Book Your Photography Services in Perinthalmanna, Kerala Today</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
             Let&apos;s discuss how we can capture your special moments

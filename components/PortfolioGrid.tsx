@@ -190,10 +190,10 @@ export default function PortfolioGrid() {
             </span>
           </div>
           <h2 className="section-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
-            Featured Projects
+            Recent Projects
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Each frame tells a story, each moment captured with precision and artistry
+           A Glimpse of Stories We've Told
           </p>
         </div>
 

@@ -7,8 +7,8 @@ import Testimonials from '@/components/Testimonials'
 import CTA from '@/components/CTA'
 
 export const metadata = {
-  title: 'Maelstrom Frames - Professional Photography & Videography',
-  description: 'Capturing life\'s most precious moments with artistic excellence. Professional wedding photography, event coverage, and cinematic videography.',
+  title: 'Best Wedding Photography in Perinthalmanna, Kerala',
+  description: 'Best wedding photography & videography in Perinthalmanna, Kerala. Capture your special moments with professional wedding videography services. Book us now!',
 }
 
 export default function Home() {

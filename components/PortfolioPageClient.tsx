@@ -55,8 +55,9 @@ export default function PortfolioPageClient({ works }: PortfolioPageClientProps)
               Our Portfolio
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
-            Our Portfolio
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
+            Wedding Photography Portfolio in Perinthalmanna
+            <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium drop-shadow-lg">Gallery of Events, Weddings & Commercial Work</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
             Explore our collection of stunning photography and videography work
@@ -71,10 +72,10 @@ export default function PortfolioPageClient({ works }: PortfolioPageClientProps)
       <section className="section-padding bg-warm-50">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
-            Ready to Create Your Story?
+            Ready to See More?
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Let&apos;s discuss how we can capture your special moments
+            Browse our full portfolio, or better yet, let's talk about your project. Every event is different, and we'd love to discuss how we can capture yours.
           </p>
           <Link href="/contact" className="btn btn-primary text-lg px-8 py-4">
             Get in Touch

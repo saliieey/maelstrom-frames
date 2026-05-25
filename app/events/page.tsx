@@ -64,23 +64,23 @@ export default function Events() {
 
   const eventTypes = [
     {
-      title: 'Corporate Events',
-      description: 'Professional documentation of corporate gatherings, product launches, conferences, and business meetings. We understand the importance of capturing both the formal proceedings and the networking moments that make corporate events successful.',
+      title: 'Large-scale Events & Concerts',
+      description: 'University fests, music fests, community fests, concerts – all fall into our expertise. Our team has dealt with big crowds, many stages, fast-moving activities, and colorful lights. With our multi-camera team, we can make sure that you cover everything, from the main stage to reactions of the audience.',
       image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
-      title: 'Festivals & Celebrations',
-      description: 'Capture the energy and excitement of festivals, cultural celebrations, and community events. Our team thrives in dynamic environments, documenting the vibrant atmosphere and memorable moments that make these occasions special.',
+      title: 'Corporate Events',
+      description: 'Product launches, conferences, seminars, business meetings, awards ceremonies—everything falls into our expertise. Our team knows what is worth covering at a corporate event.',
       image: 'https://images.unsplash.com/photo-1478147427282-58a87a120781?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
-      title: 'Conferences & Seminars',
-      description: 'Comprehensive coverage of conferences, seminars, and educational events. We document keynote speeches, panel discussions, and networking sessions, ensuring that important content and interactions are preserved for future reference.',
+      title: 'Festivals & Cultural Celebrations',
+      description: 'The chaos of a festival and colorful people—everything is worth capturing. That’s why our team works best in such conditions, knowing how to move through big crowds and capture natural reactions.',
       image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
-      title: 'Product Launches',
-      description: 'Create excitement and buzz around your product launch with professional photography and videography. We capture the unveiling, demonstrations, and audience reactions, creating content perfect for marketing and social media.',
+      title: 'Commercial & Marketing Events',
+      description: 'Launch events, product activation, brand promotion – we are here to make content for you to use right away. Our clips will be perfect for social media and marketing teams.',
       image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
   ]
@@ -107,7 +107,8 @@ export default function Events() {
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
-            Event Coverage
+            Event Photography in Perinthalmanna
+            <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium drop-shadow-lg">Professional Coverage for Large Events, Concerts & Corporate Gatherings</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
             Professional documentation of your most important events
@@ -120,16 +121,19 @@ export default function Events() {
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center px-4">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6 md:mb-8 leading-tight">
-              Comprehensive Event Documentation
+              Comprehensive Event Coverage 
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-              At Maelstrom Frames, we specialize in capturing the essence of events through professional photography and videography. Whether you&apos;re hosting a corporate conference, a cultural festival, a product launch, or any other significant gathering, our experienced team ensures that every important moment is documented with precision and artistry.
+              Things can get messy, and there is no retake option at any time. That's why we come prepared to the shoot, knowing the layout of the place and how we will adapt to your event.
             </p>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-              Our event coverage services go beyond simple documentation. We understand that events are dynamic, multi-faceted experiences that require a comprehensive approach. Our team arrives early to assess the venue, coordinate with event organizers, and set up equipment strategically to capture both the planned activities and spontaneous moments that make events memorable.
+              Our methodology includes: Scouting the location before the shoot; Understanding the flow of the event; Positioning multiple cameras to catch the highlights; Anticipating key events; Capturing the feeling of the event; Being discreet and blending into the background; Providing you with outstanding results in days instead of weeks.
+            </p>
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+             We have done everything, from college fests with thousands of people participating to marathons where everyone runs; From launching new products in corporations where we need to follow strict schedules to shooting music concerts with stages and lighting equipment. Every event needs particular skills; we have all of those.
             </p>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
-              With state-of-the-art equipment and years of experience, we deliver high-quality visual content that serves multiple purposes: from marketing materials and social media content to archival documentation and future reference. We work seamlessly in the background, ensuring that our presence enhances rather than disrupts your event, while capturing the energy, emotions, and key moments that define the occasion.
+            The outcome of our work? You receive full video documentation that is useful for several purposes at once: Social media content while the event trends, promotional material for future campaigns, archived footage, and highlight reels capturing the atmosphere.
             </p>
           </div>
         </div>
@@ -177,20 +181,20 @@ export default function Events() {
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-8 md:mb-12 text-center leading-tight">
-              What&apos;s Included
+              What we deliver
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               {[
-                'Multi-camera video coverage',
-                'Professional photography',
-                'Drone footage (where applicable)',
-                'Real-time social media updates',
-                'Same-day highlights reel',
-                'Full event documentation',
-                'Post-event editing',
-                'Online gallery access',
-                'Custom packages available',
-                'Backup equipment on-site',
+                'Multiple camera shooting — Diverse angles, flawless sync, full coverage',
+                'Professional photographs — Broad images, detailed pictures, spontaneous clicks, and hero shots',
+                'Drone footage — Above-the-ground visuals where required/appropriate',
+                'Option for live streaming—Live coverage in case it is required',
+                'Immediate social media content—Content that trends while your event is in progress',
+                'Event highlights reel—Polished 2-5 minute video ready within 48-72 hours',
+                'Event documentation — Full video/photography documentation for future use',
+                'Finalized color grading—Not raw content but professionally graded final output',
+                'Online gallery — For easy download and distribution among your team members',
+                'Backup equipment—Never dependent on a single camera or battery',
               ].map((item) => (
                 <div key={item} className="flex items-start">
                   <svg
@@ -223,18 +227,18 @@ export default function Events() {
               {[
                 {
                   step: '01',
-                  title: 'Consultation',
-                  description: 'We begin with a detailed consultation to understand your event, its objectives, and your specific requirements. This helps us create a customized coverage plan.',
+                  title: 'Before Your Event',
+                  description: 'We organize a consultation meeting in which we learn about your event and its goals. We then make our way to your location to check out possible camera angles, light placements, and other relevant aspects of shooting.',
                 },
                 {
                   step: '02',
-                  title: 'Pre-Event Planning',
-                  description: 'Our team visits the venue, coordinates with event organizers, and plans camera placements and coverage strategies to ensure comprehensive documentation.',
+                  title: 'During Your Event',
+                  description: 'We come early to setup and begin preparations before the first guest arrives at your party. During the process, we stay discreetly in the background, always on time but in a manner in which you will barely notice us. With multiple camera crews, we cover all angles—main events, secondary events, and random events.',
                 },
                 {
                   step: '03',
-                  title: 'Event Coverage',
-                  description: 'On the day of the event, our professional team arrives early, sets up equipment, and captures all important moments throughout the duration of your event.',
+                  title: 'After Your Event',
+                  description: 'We organize your content into a professional video or image presentation. In this regard, you can enjoy viewing a preview within just a few days after the event. You also get access to our entire content library with editing services included.',
                 },
                 {
                   step: '04',
@@ -272,10 +276,10 @@ export default function Events() {
       <section className="section-padding bg-gradient-to-br from-warm-600 to-warm-800 text-white">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-6 md:mb-8 leading-tight">
-            Ready to Document Your Event?
+            Let’s Record Your Event
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Contact us today to discuss your event coverage needs and receive a customized quote
+         It doesn’t matter whether you are organizing an event for 100 or 5000 people; we have the skills and equipment to get the job done. Simply tell us about your event, and we will devise a recording plan that is perfect for you.
           </p>
           <Link href="/contact" className="btn bg-white text-warm-800 hover:bg-warm-50 text-lg px-8 py-4">
             Get a Quote
