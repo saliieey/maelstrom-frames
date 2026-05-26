@@ -102,7 +102,6 @@ export default function Events() {
             loading="eager"
             decoding="async"
           />
-          />
         </div>
         <div ref={heroRef} className="relative z-20 text-center px-4">
           <div className="mb-4 md:mb-6">
