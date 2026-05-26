@@ -92,12 +92,16 @@ export default function Events() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
           <Image
-            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-            alt="Event Coverage"
+            src="/images/hero/event-cover.jpg"
+            alt="Event Coverage - Professional Event Photography"
             fill
             className="object-cover"
             priority
-            quality={90}
+            quality={85}
+            sizes="100vw"
+            loading="eager"
+            decoding="async"
+          />
           />
         </div>
         <div ref={heroRef} className="relative z-20 text-center px-4">

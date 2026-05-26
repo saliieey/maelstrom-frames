@@ -114,13 +114,16 @@ export default function Services() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
           <Image
-            src={`/images/services/hero.jpg`}
-            alt="Services"
+            src={`/images/hero/services-cover.jpg`}
+            alt="Services - Professional Photography Services"
             onError={(e: any) => { e.currentTarget.src = fallbackHero; e.currentTarget.srcset = '' }}
             fill
             className="object-cover"
             priority
             quality={90}
+            sizes="100vw"
+            loading="eager"
+            decoding="async"
           />
         </div>
         <div ref={heroRef} className="relative z-20 text-center px-4">
