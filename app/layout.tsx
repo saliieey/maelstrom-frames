@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     maximumScale: 5,
     viewportFit: 'cover', // Support for iOS safe areas
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({

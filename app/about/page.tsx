@@ -108,7 +108,7 @@ export default function About() {
               </h2>
             </div>
 
-            <div className="prose prose-lg max-w-none space-y-8">
+            <div className="prose prose-lg max-w-none space-y-8 text-center">
               <div className="text-lg text-gray-700 leading-relaxed">
                 <p className="mb-6">
                   Maelstrom Frames began from no vision of awards and recognition; rather, it was borne from the realization of the need for people who can provide high-quality visuals quickly.
@@ -198,33 +198,26 @@ export default function About() {
       {/* Team Section */}
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-warm-600 text-sm font-semibold uppercase tracking-wider mb-4 block">
-              Our Team
-            </span>
-            <h2 className="text-5xl sm:text-6xl font-serif font-bold text-gray-900 mb-6">
-              Meet the Artists
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              A talented group of professionals dedicated to bringing your vision to life
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="text-center group">
-                <div className="relative w-64 h-64 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-warm-100 group-hover:ring-warm-300 transition-all duration-500">
-                  <Image
-                    src={`https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80&sig=${i}`}
-                    alt={`Team member ${i}`}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Team Member {i}</h3>
-                <p className="text-warm-600 font-medium mb-2">Lead Photographer</p>
-                <p className="text-gray-600">Specializing in wedding and event photography with over 8 years of experience</p>
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-12 text-center">
+              <span className="text-warm-600 text-sm font-semibold uppercase tracking-wider mb-4 block">
+                Our Team
+              </span>
+              <h2 className="text-5xl sm:text-6xl font-serif font-bold text-gray-900 mb-6">
+                The Maelstrom Crew
+              </h2>
+            </div>
+
+            <div className="prose prose-lg max-w-none space-y-8 text-center">
+              <div className="text-lg text-gray-700 leading-relaxed">
+                <p className="mb-6">
+                  Besides being photographers and videographers, we are professional visual storytellers who have been trained to do things quickly while delivering great quality over the years. The crew is made up of members who have been trained in capturing events, including weddings, mega events, concerts, and commercial videos. We have been doing this together as a crew for quite some time now; therefore, because we know one another very well, we can easily capture things.
+                </p>
+                <p>
+                  Each member of our crew comes with unique skills such as wedding filming, event photography, portrait photography, color grading, etc.
+                </p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

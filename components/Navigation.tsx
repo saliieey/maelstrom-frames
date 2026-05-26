@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { gsap } from 'gsap'
 
@@ -75,12 +76,10 @@ export default function Navigation() {
   return (
     <>
       <nav 
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out ${
-          isScrolled
-            ? 'bg-white/95 backdrop-blur-2xl shadow-lg border-b border-gray-200/60 pb-4 nav-safe-top-scrolled'
-            : isHomePage
-            ? 'bg-gradient-to-b from-black/40 via-black/30 to-transparent backdrop-blur-sm pb-6 md:pb-7 nav-safe-top'
-            : 'bg-white/95 backdrop-blur-2xl shadow-md border-b border-gray-200/60 pb-5 nav-safe-top-other'
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out py-4 md:py-5 ${
+          isScrolled || !isHomePage
+            ? 'bg-white/95 backdrop-blur-2xl shadow-sm border-b border-gray-100'
+            : 'bg-gradient-to-b from-black/60 to-transparent'
         }`}
       >
         {/* Subtle gradient overlay for depth */}
@@ -98,13 +97,26 @@ export default function Navigation() {
               }`}
             >
               <div className="flex items-center">
-                <span className={`text-2xl sm:text-3xl md:text-[2rem] font-serif font-bold tracking-tight ${
-                  isScrolled || !isHomePage
-                    ? 'text-gray-900'
-                    : 'text-white drop-shadow-lg'
-                }`}>
-                  Maelstrom Frames
-                </span>
+                <div className="relative w-36 h-9 sm:w-44 sm:h-11 md:w-52 md:h-12">
+                  <Image 
+                    src="/images/logo-black-trimmed.png" 
+                    alt="Maelstrom Frames Logo" 
+                    fill 
+                    className={`object-contain object-left brightness-0 transition-opacity duration-500 ${
+                      isScrolled || !isHomePage ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    priority
+                  />
+                  <Image 
+                    src="/images/logo-white-trimmed.png" 
+                    alt="Maelstrom Frames Logo" 
+                    fill 
+                    className={`object-contain object-left brightness-0 invert drop-shadow-lg transition-opacity duration-500 ${
+                      isScrolled || !isHomePage ? 'opacity-0' : 'opacity-100'
+                    }`}
+                    priority
+                  />
+                </div>
               </div>
             </Link>
 
@@ -259,10 +271,15 @@ export default function Navigation() {
           <div className="relative border-b border-gray-100 bg-gradient-to-br from-white to-gray-50/50">
             <div className="flex items-center justify-between px-6 py-5">
               <div className="flex flex-col space-y-1">
-                <span className="text-lg font-serif font-bold tracking-tight text-gray-900">
-                  Maelstrom Frames
-                </span>
-                <span className="text-[11px] font-medium uppercase tracking-wider text-gray-500">
+                <div className="relative w-32 h-8">
+                  <Image 
+                    src="/images/logo-black-trimmed.png" 
+                    alt="Maelstrom Frames Logo" 
+                    fill 
+                    className="object-contain object-left brightness-0"
+                  />
+                </div>
+                <span className="text-[11px] font-medium uppercase tracking-wider text-gray-500 mt-1">
                   Photography &amp; Videography
                 </span>
               </div>
