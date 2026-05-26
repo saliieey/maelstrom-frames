@@ -58,6 +58,12 @@ export default function Contact() {
           },
         })
       }
+
+      if (typeof window !== 'undefined' && window.location.hash === '#contact-form' && formRef.current) {
+        window.requestAnimationFrame(() => {
+          formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        })
+      }
     })
 
     return () => ctx.revert()
@@ -173,9 +179,6 @@ export default function Contact() {
             Contact Us
             <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium drop-shadow-lg">Book Your Photography Services in Perinthalmanna, Kerala Today</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
-            Let&apos;s discuss how we can capture your special moments
-          </p>
         </div>
       </section>
 
@@ -184,7 +187,7 @@ export default function Contact() {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto px-4 sm:px-0">
             {/* Contact Form */}
-            <div ref={formRef}>
+            <div ref={formRef} id="contact-form">
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6 md:mb-8 leading-tight">
                 Send Us a Message
               </h2>

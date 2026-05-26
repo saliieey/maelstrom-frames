@@ -160,7 +160,7 @@ export default function Navigation() {
               
               {/* CTA Button - Ultra Premium with Multiple Effects */}
               <Link
-                href="/contact"
+                href="/contact#contact-form"
                 prefetch={true}
                 className={`group relative px-8 py-3.5 font-bold text-sm tracking-wider rounded-full overflow-hidden transition-all duration-500 ${
                   isScrolled || !isHomePage

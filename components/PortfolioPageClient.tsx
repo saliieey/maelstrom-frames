@@ -59,9 +59,6 @@ export default function PortfolioPageClient({ works }: PortfolioPageClientProps)
             Wedding Photography Portfolio in Perinthalmanna
             <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium drop-shadow-lg">Gallery of Events, Weddings & Commercial Work</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
-            Explore our collection of stunning photography and videography work
-          </p>
         </div>
       </section>
 

@@ -133,9 +133,6 @@ export default function Services() {
             Professional Photography Services in Perinthalmanna
             <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium">Wedding, Event, Portrait & Commercial Photography</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive photography and videography solutions
-          </p>
         </div>
       </section>
 
@@ -176,7 +173,7 @@ export default function Services() {
                     ))}
                   </ul>
                   <Link
-                    href="/contact"
+                    href="/contact#contact-form"
                     className="btn btn-primary inline-block"
                   >
                     Get a Quote

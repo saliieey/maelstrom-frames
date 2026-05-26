@@ -32,9 +32,6 @@ export default async function BlogPage() {
             Photography Blog
             <span className="block mt-3 text-lg md:text-xl lg:text-2xl text-gray-600 font-medium font-sans">Wedding, Event & Portrait Photography Tips in Perinthalmanna, Kerala</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Tips, guides, and beautiful stories to inspire your wedding planning journey and help you capture perfect memories.
-          </p>
         </div>
       </section>
 

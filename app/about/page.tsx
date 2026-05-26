@@ -89,9 +89,6 @@ export default function About() {
             Wedding Photography Company in Perinthalmanna
             <span className="text-2xl sm:text-3xl lg:text-4xl block mt-4 text-white/90 font-medium drop-shadow-lg">Fast Delivery & Large Event Coverage Experts</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
-            Crafting visual stories that last a lifetime
-          </p>
         </div>
       </section>
 

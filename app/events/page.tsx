@@ -110,9 +110,6 @@ export default function Events() {
             Event Photography in Perinthalmanna
             <span className="text-xl sm:text-2xl md:text-3xl block mt-3 text-white/90 font-medium drop-shadow-lg">Professional Coverage for Large Events, Concerts & Corporate Gatherings</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed">
-            Professional documentation of your most important events
-          </p>
         </div>
       </section>
 
@@ -281,7 +278,7 @@ export default function Events() {
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
          It doesn’t matter whether you are organizing an event for 100 or 5000 people; we have the skills and equipment to get the job done. Simply tell us about your event, and we will devise a recording plan that is perfect for you.
           </p>
-          <Link href="/contact" className="btn bg-white text-warm-800 hover:bg-warm-50 text-lg px-8 py-4">
+          <Link href="/contact#contact-form" className="btn bg-white text-warm-800 hover:bg-warm-50 text-lg px-8 py-4">
             Get a Quote
           </Link>
         </div>
