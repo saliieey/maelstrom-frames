@@ -18,19 +18,20 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 })
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover', // Support for iOS safe areas
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://maelstrom-frames.vercel.app'),
+  metadataBase: new URL('https://www.maelstromframes.com'),
   title: 'Maelstrom Frames - Professional Photography & Videography',
   description: 'Capturing life\'s most precious moments with artistic excellence. Professional wedding photography, event coverage, and cinematic videography.',
   keywords: 'photography, videography, wedding photography, event coverage, professional photographer',
   alternates: {
     canonical: '/',
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    viewportFit: 'cover', // Support for iOS safe areas
   },
   icons: {
     icon: '/favicon.ico',

@@ -11,25 +11,25 @@ if (typeof window !== 'undefined') {
 
 const testimonials = [
   {
-    name: 'Sarah & Michael',
+    name: 'Sandra',
     event: 'Wedding',
-    text: 'Maelstrom Frames captured our wedding day perfectly. Every moment was beautifully documented, and the final photos exceeded our expectations. The team was professional, creative, and made us feel completely at ease. Highly recommended!',
+    text: 'From our first meeting, the Maelstrom team felt like family. They captured our wedding in Perinthalmanna so beautifully. We hate posing, but they made us feel completely natural and captured the raw emotions. The wedding album design and quality is outstanding!',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
+    image: '/images/testimonials/client-1.jpeg',
   },
   {
-    name: 'TechCorp Inc.',
-    event: 'Corporate Event',
-    text: 'Professional, punctual, and incredibly talented. The team documented our product launch flawlessly. The video highlights were exactly what we needed for our marketing campaign. Outstanding work!',
+    name: 'Vyshnav',
+    event: 'Wedding',
+    text: 'The photos are absolutely breathtaking! The candid shots perfectly captured the joy and laughter of our big day. Maelstrom Frames has a unique eye for lighting and details that sets them apart. Thank you for giving us memories we will cherish forever.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
+    image: '/images/testimonials/client-2.jpeg',
   },
   {
-    name: 'Jennifer & David',
+    name: 'Waleed',
     event: 'Wedding',
-    text: 'Working with Maelstrom Frames was an absolute pleasure. They made us feel comfortable throughout the day and delivered stunning results that we\'ll treasure forever. The attention to detail was remarkable.',
+    text: 'Absolutely loved the wedding cinematic video! Maelstrom Frames did an incredible job documenting our Nikah. The team was so energetic yet non-intrusive. What surprised us most was how fast they delivered the highlights and the high-resolution photos. Definitely the best choice in Malappuram.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
+    image: '/images/testimonials/client-3.jpeg',
   },
 ]
 

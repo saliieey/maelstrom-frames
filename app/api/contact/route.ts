@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
   }
 
   const apiKey = process.env.RESEND_API_KEY?.trim()
-  const to = process.env.CONTACT_TO_EMAIL?.trim() || 'maelstromframes@gmail.com'
+  const to = process.env.CONTACT_TO_EMAIL?.trim() || 'connect@maelstromframes.com'
   const from =
     process.env.CONTACT_FROM_EMAIL?.trim() ||
     'Maelstrom Frames <onboarding@resend.dev>'

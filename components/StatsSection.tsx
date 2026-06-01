@@ -24,7 +24,7 @@ export default function StatsSection() {
           })
         }
       })
-      
+
       // Animate stats on scroll - faster and smoother
       statsRef.current.forEach((stat, index) => {
         if (stat) {
@@ -49,7 +49,7 @@ export default function StatsSection() {
             // Find decorative elements
             const topLine = stat.querySelector('.absolute.top-0') as HTMLElement
             const bottomLine = stat.querySelector('.absolute.bottom-0') as HTMLElement
-            
+
             // Create scroll-triggered hover effect for each card individually
             ScrollTrigger.create({
               trigger: stat,
@@ -102,7 +102,7 @@ export default function StatsSection() {
           }
         }
       })
-      
+
       // Refresh ScrollTrigger after a brief delay to ensure proper calculation
       setTimeout(() => {
         ScrollTrigger.refresh()
@@ -113,13 +113,13 @@ export default function StatsSection() {
   }, [])
 
   const stats = [
-    { number: '2+', label: 'Events Captured' },
+    { number: '12+', label: 'Events Captured' },
     { number: '2+', label: 'Years Experience' },
     { number: '100%', label: 'Client Satisfaction' },
   ]
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative bg-white py-12 md:py-16 -mt-16 md:-mt-20 z-30"
     >
@@ -137,17 +137,17 @@ export default function StatsSection() {
               >
                 {/* Decorative Element */}
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-warm-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-                
+
                 {/* Number - Same sizing as desktop */}
                 <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4 leading-tight font-serif break-words overflow-visible">
                   {stat.number}
                 </div>
-                
+
                 {/* Label - Same sizing as desktop */}
                 <div className="text-gray-600 text-xs sm:text-sm md:text-base lg:text-lg font-medium uppercase tracking-wider break-words px-2">
                   {stat.label}
                 </div>
-                
+
                 {/* Bottom Accent Line */}
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-warm-500 to-warm-600 group-hover:w-20 transition-all duration-500 rounded-full" />
               </div>

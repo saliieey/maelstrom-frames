@@ -96,7 +96,7 @@ export default function About() {
       </section>
 
       {/* Story Section */}
-      <section ref={storyRef} className="section-padding bg-white">
+      <section ref={storyRef} className="pt-[clamp(3rem,8vw,6rem)] md:pt-[clamp(4rem,10vw,8rem)] pb-8 md:pb-12 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="mb-12 text-center">
@@ -119,7 +119,7 @@ export default function About() {
                 <p className="mb-6">
                  Our uniqueness comes not from the speed at which we provide services but from the fact that we can do the kind of work at that pace. When our competitors are still working on their videos, we&#39;ve already delivered the wedding photography package you ordered. When they&#39;re trying to cope with the logistics of a big event, we&#39;ve already captured the whole concert using multiple angles, mixing live recordings and high-quality video.
                 </p>
-                <p className="mb-6">
+                <p className="mb-0">
                   We are a professional wedding videography company in Perinthalmanna that knows one thing: your time is now, not tomorrow.
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <section ref={valuesRef} className="section-padding bg-gradient-to-b from-white via-warm-50/30 to-white relative overflow-hidden">
+      <section ref={valuesRef} className="pt-8 md:pt-12 pb-[clamp(3rem,8vw,6rem)] md:pb-[clamp(4rem,10vw,8rem)] bg-gradient-to-b from-white via-warm-50/30 to-white relative overflow-hidden">
         {/* Background Decoration */}
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-warm-200/20 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-warm-300/20 rounded-full blur-3xl" />

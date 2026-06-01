@@ -384,10 +384,10 @@ export default function Navigation() {
                 +91 7907742698
               </a>
               <a 
-                href="mailto:maelstromframes@gmail.com" 
+                href="mailto:connect@maelstromframes.com" 
                 className="block text-xs text-gray-500 hover:text-warm-600 transition-colors"
               >
-                maelstromframes@gmail.com
+                connect@maelstromframes.com
               </a>
             </div>
           </div>

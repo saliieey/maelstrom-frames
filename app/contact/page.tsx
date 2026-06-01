@@ -377,10 +377,10 @@ export default function Contact() {
                     <div>
                       <p className="font-medium text-gray-900 mb-1">Email</p>
                       <a
-                        href="mailto:maelstromframes@gmail.com"
+                        href="mailto:connect@maelstromframes.com"
                         className="text-warm-600 hover:text-warm-700 transition-colors text-sm md:text-base"
                       >
-                        maelstromframes@gmail.com
+                        connect@maelstromframes.com
                       </a>
                     </div>
                   </div>
@@ -423,7 +423,9 @@ export default function Contact() {
                     </svg>
                     <div>
                       <p className="font-medium text-gray-900 mb-1">Location</p>
-                      <p className="text-gray-700 text-sm md:text-base">Available Worldwide</p>
+                      <p className="text-gray-700 text-sm md:text-base">
+                        Door No 33/157, CP Tower (2nd Floor), Ootty Road, Perinthalmanna, Kerala 679322
+                      </p>
                     </div>
                   </div>
                 </div>

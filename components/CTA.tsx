@@ -90,8 +90,8 @@ export default function CTA() {
           {/* Trust Indicators - Perfectly Aligned - Mobile Optimized */}
           <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-2xl mx-auto pt-6 sm:pt-8 md:pt-12 border-t border-white/20 px-2 sm:px-0 w-full">
             {[
-              { number: '500+', label: 'Events' },
-              { number: '10+', label: 'Years' },
+              { number: '12+', label: 'Events' },
+              { number: '2+', label: 'Years' },
               { number: '100%', label: 'Satisfaction' },
             ].map((stat, i) => (
               <div key={i} className="text-center overflow-visible min-w-0 w-full">
