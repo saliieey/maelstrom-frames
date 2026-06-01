@@ -61,16 +61,66 @@ interface RawWorkFrame {
   }
 }
 
-function decodeHtmlEntities(text: string): string {
+export function decodeHtmlEntities(text: string): string {
   if (!text) return ''
-  return text
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'")
-    .replace(/&nbsp;/g, ' ')
+  
+  // 1. Decode numeric decimal entities (e.g. &#8217;)
+  let decoded = text.replace(/&#(\d+);/g, (_, dec) => {
+    try {
+      return String.fromCharCode(parseInt(dec, 10))
+    } catch {
+      return _
+    }
+  })
+  
+  // 2. Decode numeric hexadecimal entities (e.g. &#x2019;)
+  decoded = decoded.replace(/&#[xX]([0-9a-fA-F]+);/g, (_, hex) => {
+    try {
+      return String.fromCharCode(parseInt(hex, 16))
+    } catch {
+      return _
+    }
+  })
+  
+  // 3. Decode common named HTML entities
+  const entities: Record<string, string> = {
+    amp: '&',
+    lt: '<',
+    gt: '>',
+    quot: '"',
+    apos: "'",
+    nbsp: ' ',
+    ndash: '–',
+    mdash: '—',
+    middot: '·',
+    hellip: '…',
+    ldquo: '“',
+    rdquo: '”',
+    lsquo: '‘',
+    rsquo: '’',
+    sbquo: '‚',
+    bdquo: '„',
+    dagger: '†',
+    Dagger: '‡',
+    permil: '‰',
+    lsaquo: '‹',
+    rsaquo: '›',
+    trade: '™',
+    copy: '©',
+    reg: '®',
+    sect: '§',
+    deg: '°',
+    plusmn: '±',
+    para: '¶',
+    euro: '€',
+  }
+  
+  return decoded.replace(/&([a-zA-Z0-9]+);/g, (match, name) => {
+    const lowerName = name.toLowerCase()
+    return Object.prototype.hasOwnProperty.call(entities, lowerName)
+      ? entities[lowerName]
+      : match
+  })
 }
 
 function transformWorkFrame(item: RawWorkFrame): WorkFrame {
@@ -115,7 +165,7 @@ function transformWorkFrame(item: RawWorkFrame): WorkFrame {
     title: decodeHtmlEntities(rawTitle),
     image: imageUrl || (imagesArray.length > 0 ? imagesArray[0] : ''),
     images: imagesArray,
-    place: item.acf?.place ?? '',
+    place: decodeHtmlEntities(item.acf?.place ?? ''),
     date: item.acf?.date ?? '',
     main_category: normalizeMainCategory(item.acf?.main_category),
     wedding_type: (item.acf?.wedding_type as 'hindu' | 'muslim' | 'christian') || null,
@@ -212,14 +262,14 @@ function transformBlogPost(item: RawWPPost): BlogPost {
     slug: item.slug,
     title: decodeHtmlEntities(item.title?.rendered ?? ''),
     content: item.content?.rendered ?? '',
-    excerpt: item.excerpt?.rendered ?? '',
+    excerpt: decodeHtmlEntities(item.excerpt?.rendered ?? ''),
     date: new Date(item.date).toLocaleDateString('en-US', {
       month: 'long',
       day: 'numeric',
       year: 'numeric'
     }),
     image: imageUrl || 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Graceful fallback
-    author: author,
+    author: decodeHtmlEntities(author),
     category: decodeHtmlEntities(category),
   }
 }

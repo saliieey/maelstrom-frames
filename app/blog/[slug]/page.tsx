@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getBlogPostBySlug } from '@/lib/wordpress'
+import { getBlogPostBySlug, decodeHtmlEntities } from '@/lib/wordpress'
 
 export const dynamic = 'force-dynamic'
 
@@ -10,9 +10,21 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!post) {
     return { title: 'Post Not Found - Maelstrom Frames' }
   }
+
+  // Clean and decode the excerpt for meta description
+  const rawExcerpt = post.excerpt.replace(/<[^>]+>/g, '')
+  const decodedExcerpt = decodeHtmlEntities(rawExcerpt).replace(/\s+/g, ' ').trim()
+  const cleanExcerpt = decodedExcerpt
+    .replace(/\[\s*\.\.\.\s*\]/g, '...')
+    .replace(/\[\s*…\s*\]/g, '...')
+  
+  const description = cleanExcerpt.length > 150 
+    ? cleanExcerpt.slice(0, 150).trim() + '...'
+    : cleanExcerpt
+
   return {
     title: `${post.title} - Maelstrom Frames Blog`,
-    description: post.excerpt.replace(/<[^>]+>/g, '').slice(0, 150) + '...',
+    description,
     alternates: {
       canonical: `/blog/${params.slug}`,
     },
